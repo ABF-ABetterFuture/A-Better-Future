@@ -1,57 +1,544 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>A Better Future</title>
-  <style>
-    body {
-      font-family: "Helvetica", sans-serif;
-      max-width: 800px;
-      margin: auto;
-      padding: 2em;
-      background-color: #f8f8f8;
-      color: #333;
-    }
-    h1, h2 {
-      color: #007acc;
-    }
-    a {
-      color: #007acc;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .footer {
-      margin-top: 2em;
-      font-size: 0.9em;
-      color: #777;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Better Future ✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* 头部导航 */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(52, 168, 83, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #34a853;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-item {
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            color: #5f6368;
+            font-weight: 500;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(52, 168, 83, 0.1);
+            color: #34a853;
+        }
+
+        /* 主要内容区域 */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+            padding: 2rem;
+            min-height: calc(100vh - 80px);
+        }
+
+        /* 侧边栏 */
+        .sidebar {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            padding: 1.5rem;
+            height: fit-content;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+        }
+
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ea4335;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sidebar-item {
+            display: block;
+            padding: 0.7rem 1rem;
+            margin: 0.3rem 0;
+            background: rgba(66, 133, 244, 0.05);
+            border-radius: 8px;
+            text-decoration: none;
+            color: #1a73e8;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-item:hover {
+            background: rgba(66, 133, 244, 0.1);
+            border-left-color: #1a73e8;
+            transform: translateX(2px);
+        }
+
+        /* 主内容区 */
+        .content {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #34a853;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #5f6368;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1rem;
+            color: #ea4335;
+            font-weight: 500;
+        }
+
+        /* 特性卡片 */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(66, 133, 244, 0.05) 0%, rgba(52, 168, 83, 0.05) 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(52, 168, 83, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card h3 {
+            color: #1a73e8;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .feature-card p {
+            color: #5f6368;
+            font-size: 0.9rem;
+        }
+
+        /* 下载按钮 */
+        .download-section {
+            background: linear-gradient(135deg, rgba(52, 168, 83, 0.1) 0%, rgba(66, 133, 244, 0.1) 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #34a853 0%, #1a73e8 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 168, 83, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 168, 83, 0.4);
+        }
+
+        /* Q&A 样式 */
+        .qa-item {
+            background: rgba(66, 133, 244, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+            border-left: 4px solid #1a73e8;
+        }
+
+        .qa-question {
+            font-weight: 600;
+            color: #1a73e8;
+            margin-bottom: 0.5rem;
+        }
+
+        .qa-answer {
+            color: #5f6368;
+        }
+
+        /* 联系表单 */
+        .contact-form {
+            background: rgba(52, 168, 83, 0.05);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #34a853;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid rgba(52, 168, 83, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: #34a853;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #2d8f47;
+            transform: translateY(-1px);
+        }
+
+        /* 免责声明 */
+        .disclaimer {
+            background: rgba(234, 67, 53, 0.05);
+            border: 1px solid rgba(234, 67, 53, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .disclaimer h3 {
+            color: #ea4335;
+            margin-bottom: 1rem;
+        }
+
+        .disclaimer ul {
+            color: #5f6368;
+            padding-left: 1.5rem;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- 头部导航 -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo">A Better Future ✨</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item active" data-section="home">项目介绍</li>
+                    <li class="nav-item" data-section="notes">笔记资料</li>
+                    <li class="nav-item" data-section="qa">Q&A</li>
+                    <li class="nav-item" data-section="join">加入我们</li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-  <h1>A Better Future 🌱</h1>
-  <p>匿名、开放、去中心化的生物科学专业学习资料计划</p>
+    <!-- 主要内容 -->
+    <div class="main-container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">📚 课程资料</div>
+                <a href="https://www.jianguoyun.com/p/Dc_9j2AQ8ITEDRiGiIkGIAA" class="sidebar-item" target="_blank">分子生物学</a>
+                <a href="#" class="sidebar-item">生物化学</a>
+                <a href="#" class="sidebar-item">细胞生物学</a>
+                <a href="#" class="sidebar-item">遗传学</a>
+                <a href="#" class="sidebar-item">生态学</a>
+                <a href="#" class="sidebar-item">植物生物学</a>
+                <a href="#" class="sidebar-item">动物生物学</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <div class="sidebar-title">⬇️ 快速下载</div>
+                <a href="https://www.jianguoyun.com/p/Dc_9j2AQ8ITEDRiGiIkGIAA" class="sidebar-item" target="_blank">坚果云链接</a>
+                <a href="#" class="sidebar-item">蓝奏云备份</a>
+                <a href="#" class="sidebar-item">GitHub仓库</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <div class="sidebar-title">📧 联系方式</div>
+                <a href="mailto:cyploveheme@gmail.com" class="sidebar-item">匿名邮箱</a>
+            </div>
+        </aside>
 
-  <h2>📚 课程资料</h2>
-  <ul>
-  <li><a href="https://www.jianguoyun.com/p/DepuaiQQ8ITEDRiFvIgGIAA" target="_blank" rel="noopener noreferrer">test</a></li>
+        <!-- 主内容区 -->
+        <main class="content">
+            <!-- 项目介绍 -->
+            <section class="content-section active" id="home">
+                <div class="hero">
+                    <h1>A Better Future ✨</h1>
+                    <p>一个面向生物科学专业学生的匿名开源资料项目</p>
+                    <p class="subtitle">打破信息垄断，追求共享精神，构建更公平的学习环境</p>
+                </div>
 
-    <!-- 可继续添加其他课程 -->
-  </ul>
+                <div class="features">
+                    <div class="feature-card">
+                        <h3>🌱 项目简介</h3>
+                        <p>A Better Future 是一个由匿名志愿者发起的学习资源整理计划。我们致力于收集、整理、分享生物科学课程的学习资料，让更多的同学受益。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>✅ 透明管理</h3>
+                        <p>所有资料透明、版本可追踪，每门课程一个PDF版本，定期更新，支持匿名提问、答疑解惑。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🔄 多重下载</h3>
+                        <p>可用 GitHub 或国内云盘下载，无需翻墙，所有云盘链接集中整理便于访问。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📁 结构清晰</h3>
+                        <p>每门课程都有独立目录，提供多版本 PDF 下载，包含版本说明与更新日志。</p>
+                    </div>
+                </div>
 
-  <h2>⬇️ 下载方式</h2>
-  <p>如无法使用 GitHub，可点击 <a href="Downloads/links.md">备用下载链接</a>（坚果云/蓝奏云）</p>
+                <div class="download-section">
+                    <h3>🔐 匿名上传与管理</h3>
+                    <p>本项目不接受所有人直接提交，但欢迎匿名投稿。请发送资料或更新建议到匿名邮箱。</p>
+                    <a href="mailto:cyploveheme@gmail.com" class="download-btn">📧 联系我们</a>
+                </div>
 
-  <h2>✉️ 提问与反馈</h2>
-  <p>欢迎你提出任何问题或建议，我们会精选并回复。</p>
-  <p>匿名邮箱：<code>cyploveheme@gmail.com</code></p>
+                <div class="disclaimer">
+                    <h3>⚠️ 免责声明</h3>
+                    <ul>
+                        <li>本项目所有内容仅供学习参考</li>
+                        <li>禁止将资料用于考试舞弊或违法用途</li>
+                        <li>所有上传文件均加水印，版权归原作者或项目组所有</li>
+                        <li>我们不求认同，只愿尊重</li>
+                    </ul>
+                </div>
+            </section>
 
-  <div class="footer">
-    <p>&copy; A Better Future 2025 | 版本公开，人人可用</p>
-  </div>
+            <!-- 笔记资料 -->
+            <section class="content-section" id="notes">
+                <h2>📚 课程笔记资料</h2>
+                <p>所有资料按课程分类整理，每个文件都包含项目水印和版本信息。</p>
+                
+                <div class="download-section">
+                    <h3>📥 当前可用资料</h3>
+                    <a href="https://www.jianguoyun.com/p/Dc_9j2AQ8ITEDRiGiIkGIAA" class="download-btn" target="_blank">分子生物学笔记 V1.0</a>
+                    <p style="margin-top: 1rem; color: #5f6368;">更多课程资料正在整理中，敬请期待...</p>
+                </div>
 
+                <div class="features">
+                    <div class="feature-card">
+                        <h3>📋 文件命名规范</h3>
+                        <p>课程名称/版本号_更新日期.pdf<br>例：分子生物学/V1.0_2024-03-01.pdf</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🔄 版本控制</h3>
+                        <p>每个资料包含README.md文件，记录版本说明与更新日志，确保透明可追溯。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Q&A -->
+            <section class="content-section" id="qa">
+                <h2>❓ 匿名问答模块</h2>
+                <p>如果你有学习困惑、未来规划、或其他想法，不妨匿名提问！我们将精选问题，用心整理回答。</p>
+                
+                <div class="contact-form">
+                    <h3>💬 提交问题</h3>
+                    <form>
+                        <div class="form-group">
+                            <label>问题分类</label>
+                            <select style="width: 100%; padding: 0.8rem; border: 1px solid rgba(52, 168, 83, 0.3); border-radius: 8px; background: rgba(255, 255, 255, 0.8);">
+                                <option>学习方法</option>
+                                <option>课程理解</option>
+                                <option>未来规划</option>
+                                <option>其他问题</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>你的问题</label>
+                            <textarea placeholder="请详细描述你的问题..."></textarea>
+                        </div>
+                        <button type="button" class="submit-btn" onclick="alert('请将问题发送至邮箱：cyploveheme@gmail.com')">提交问题</button>
+                    </form>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">Q: 如何更好地学习分子生物学？</div>
+                    <div class="qa-answer">A: 建议先建立整体框架，理解分子生物学的核心概念，然后通过实验案例加深理解。我们的笔记资料按照逻辑顺序整理，可以帮助你系统学习。</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">Q: 项目的资料质量如何保证？</div>
+                    <div class="qa-answer">A: 所有资料都经过多轮审核，由有经验的同学整理。我们采用版本控制系统，不断更新和完善内容质量。</div>
+                </div>
+            </section>
+
+            <!-- 加入我们 -->
+            <section class="content-section" id="join">
+                <h2>🤝 加入我们</h2>
+                <p>A Better Future 需要更多志同道合的朋友一起努力。无论你是想贡献资料、参与答疑，还是提供技术支持，我们都欢迎你的加入。</p>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <h3>📝 资料贡献者</h3>
+                        <p>分享你的学习笔记、总结资料，帮助更多同学。所有贡献都将匿名处理，保护你的隐私。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>💡 答疑志愿者</h3>
+                        <p>参与Q&A模块，回答同学们的问题，分享你的学习经验和见解。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🔧 技术维护</h3>
+                        <p>协助网站维护、文件整理、版本管理等技术工作，让项目运行更顺畅。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📢 推广传播</h3>
+                        <p>向身边的同学介绍项目，扩大影响力，让更多人受益于开源精神。</p>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>✉️ 联系我们</h3>
+                    <p>想要加入我们？请发送邮件说明你的想法和能贡献的方向：</p>
+                    <a href="mailto:cyploveheme@gmail.com" class="download-btn">发送邮件</a>
+                    <p style="margin-top: 1rem; color: #5f6368; font-size: 0.9rem;">
+                        我们承诺保护所有志愿者的隐私，采用匿名协作方式。
+                    </p>
+                </div>
+
+                <div class="disclaimer">
+                    <h3>🎯 我们的初心</h3>
+                    <p>不仅仅是给那些学习有困难的同学以帮助，也给那些有自己其他爱好和规划但因课程所耽搁的同学，给那些想深入学习课程的同学。更重要的是，我们希望通过开源精神的传播，让大家的价值观更加完善。</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // 导航切换功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.nav-item');
+            const contentSections = document.querySelectorAll('.content-section');
+            
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // 移除所有活动状态
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    contentSections.forEach(section => section.classList.remove('active'));
+                    
+                    // 添加当前活动状态
+                    this.classList.add('active');
+                    const targetSection = this.getAttribute('data-section');
+                    document.getElementById(targetSection).classList.add('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
