@@ -72,7 +72,7 @@
 ---
 
 **联系我们/匿名提问：**  
-abf.anonfuture@gmail.com
+cyploveheme@gmail.com
 
 **网站主页:**  
 [https://abf-abetterfuture.github.io/](https://abf-abetterfuture.github.io/)
