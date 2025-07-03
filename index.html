@@ -4,53 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Better Future ✨</title>
-    <link rel="icon" href="/logo.svg" type="image/svg">
+    <link rel="icon" type="image/svg+xml" href="/logo.svg">
     <style>
+        /* 全局变量与重置 */
         :root {
-            --bg-primary: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            --bg-secondary: rgba(255, 255, 255, 0.95);
-            --bg-card: rgba(255, 255, 255, 0.9);
-            --text-primary: #2c3e50;
-            --text-secondary: #5f6368;
-            --accent-green: #34a853;
-            --accent-blue: #1a73e8;
-            --accent-red: #ea4335;
-            --accent-yellow: #fbbc04;
-            --border-color: rgba(52, 168, 83, 0.1);
-            --shadow-light: rgba(0, 0, 0, 0.08);
-            --shadow-medium: rgba(0, 0, 0, 0.1);
+            --accent-primary: #9051e0; /* 真嗣紫色 - 主色调 */
+            --accent-secondary: #00b378; /* 荧光绿 - 强调色 */
+            --accent-tertiary: #ff6b35; /* 明日香橘红 - 辅助色 */
+            --bg-light: #ffffff; /* 白色背景 */
+            --bg-card: #fafafa; /* 卡片背景 */
+            --text-primary: #333333; /* 主文本色 */
+            --text-secondary: #666666; /* 次要文本色 */
+            --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.12);
         }
 
-        [data-theme="dark"] {
-            --bg-primary: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            --bg-secondary: rgba(30, 30, 46, 0.95);
-            --bg-card: rgba(40, 44, 52, 0.9);
-            --text-primary: #e6e8eb;
-            --text-secondary: #b3b5b8;
-            --accent-green: #4caf50;
-            --accent-blue: #2196f3;
-            --accent-red: #f44336;
-            --accent-yellow: #ff9800;
-            --border-color: rgba(76, 175, 80, 0.2);
-            --shadow-light: rgba(0, 0, 0, 0.3);
-            --shadow-medium: rgba(0, 0, 0, 0.4);
+        [data-theme="neon"] {
+            --accent-primary: #00b378; /* 荧光绿 */
+            --accent-secondary: #00d8ff; /* 凌波丽青色 */
+            --accent-tertiary: #ff6b35; /* 明日香橘红 */
+            --bg-light: #000000;
+            --bg-card: #0a0a0a;
+            --text-primary: #ffffff;
+            --text-secondary: #aaaaaa;
+            --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.5);
+            --shadow-medium: 0 8px 24px rgba(0, 216, 255, 0.3);
         }
 
-        [data-theme="eye-care"] {
-            --bg-primary: linear-gradient(135deg, #f4f1e8 0%, #e8dcc0 100%);
-            --bg-secondary: rgba(248, 245, 238, 0.95);
-            --bg-card: rgba(250, 247, 240, 0.9);
-            --text-primary: #3e3832;
-            --text-secondary: #6b634f;
-            --accent-green: #5d8a3a;
-            --accent-blue: #4a6fa5;
-            --accent-red: #a0443c;
-            --accent-yellow: #b8860b;
-            --border-color: rgba(93, 138, 58, 0.15);
-            --shadow-light: rgba(0, 0, 0, 0.06);
-            --shadow-medium: rgba(0, 0, 0, 0.08);
+        [data-theme="sunset"] {
+            --accent-primary: #ff6b35; /* 明日香橘红 */
+            --accent-secondary: #ffd161; /* 明日香黄色 */
+            --bg-light: #fff8f0;
+            --bg-card: #fffbf5;
+            --text-primary: #332923;
+            --text-secondary: #8c7b6e;
         }
 
+        [data-theme="rei"] {
+            --accent-primary: #7eb6cc; /* 凌波丽雾霾蓝 */
+            --accent-secondary: #f8e1e7; /* 凌波丽淡粉白 */
+            --bg-light: #f0f8ff;
+            --bg-card: #e6f2f8;
+            --text-primary: #444444;
+            --text-secondary: #999999;
+            --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        /* 基础样式重置 */
         * {
             margin: 0;
             padding: 0;
@@ -59,1151 +60,926 @@
 
         body {
             font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-primary);
+            background-color: var(--bg-light);
             color: var(--text-primary);
-            line-height: 1.6;
-            min-height: 100vh;
-            transition: all 0.3s ease;
+            line-height: 1.5;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        .logo-container {
+        a {
+            text-decoration: none;
+            color: var(--accent-primary);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-secondary);
+        }
+
+        /* 组件样式 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 导航栏 */
+        .header {
+            background-color: var(--bg-card);
+            box-shadow: var(--shadow-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            justify-content: space-between;
+            padding: 12px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-blue) 100%);
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            box-shadow: 0 2px 8px var(--shadow-light);
-        }
-
-        .logo-icon::before {
-            content: '';
-            width: 18px;
-            height: 18px;
-            background: white;
-            border-radius: 50%;
-            position: absolute;
-        }
-
-        .logo-icon::after {
-            content: '✓';
-            color: var(--accent-green);
+            color: white;
             font-weight: bold;
-            font-size: 12px;
-            position: absolute;
-            z-index: 1;
         }
 
         .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-green);
-            text-decoration: none;
-        }
-
-        /* Welcome Modal */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-        }
-
-        .modal {
-            background: var(--bg-card);
-            border-radius: 20px;
-            padding: 3rem;
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-            box-shadow: 0 20px 60px var(--shadow-medium);
-            text-align: center;
-            animation: modalSlideIn 0.3s ease-out;
-        }
-
-        @keyframes modalSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-30px) scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-secondary);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .modal-close:hover {
-            background: var(--accent-red);
-            color: white;
-        }
-
-        .modal h2 {
-            color: var(--accent-green);
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .modal p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        /* Header */
-        .header {
-            background: var(--bg-secondary);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 20px var(--shadow-light);
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1rem 2rem;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent-primary);
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 24px;
         }
 
         .nav-item {
+            padding: 8px 12px;
+            border-radius: 6px;
             cursor: pointer;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            color: var(--text-secondary);
             font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .nav-item:hover, .nav-item.active {
-            background: rgba(52, 168, 83, 0.1);
-            color: var(--accent-green);
+            background-color: rgba(144, 81, 224, 0.1);
+            color: var(--accent-primary);
         }
 
         .nav-controls {
             display: flex;
             align-items: center;
-            gap: 1rem;
-        }
-
-        .control-group {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            gap: 16px;
         }
 
         .theme-selector, .lang-selector {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border: 1px solid rgba(144, 81, 224, 0.3);
             border-radius: 6px;
-            padding: 0.4rem 0.8rem;
+            background-color: transparent;
             color: var(--text-primary);
-            font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: border-color 0.3s ease;
         }
 
         .theme-selector:hover, .lang-selector:hover {
-            border-color: var(--accent-blue);
+            border-color: var(--accent-primary);
         }
 
-        .main-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        /* 主内容区 */
+        .main-content {
             display: grid;
             grid-template-columns: 280px 1fr;
-            gap: 2rem;
-            padding: 2rem;
-            min-height: calc(100vh - 80px);
+            gap: 32px;
+            max-width: 1200px;
+            margin: 32px auto;
+            padding: 0 20px;
         }
 
+        /* 侧边栏 */
         .sidebar {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 1.5rem;
-            height: fit-content;
-            box-shadow: 0 4px 20px var(--shadow-light);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--shadow-light);
         }
 
         .sidebar-section {
-            margin-bottom: 2rem;
+            margin-bottom: 24px;
         }
 
         .sidebar-title {
-            font-size: 1.1rem;
+            font-size: 16px;
             font-weight: 600;
-            color: var(--accent-red);
-            margin-bottom: 1rem;
+            color: var(--accent-primary);
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 8px;
         }
 
         .sidebar-item {
             display: block;
-            padding: 0.7rem 1rem;
-            margin: 0.3rem 0;
-            background: rgba(66, 133, 244, 0.05);
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--accent-blue);
+            padding: 10px 12px;
+            margin: 6px 0;
+            border-radius: 6px;
+            background-color: rgba(144, 81, 224, 0.05);
+            color: var(--accent-primary);
             transition: all 0.3s ease;
-            border-left: 3px solid transparent;
         }
 
         .sidebar-item:hover {
-            background: rgba(66, 133, 244, 0.1);
-            border-left-color: var(--accent-blue);
-            transform: translateX(2px);
+            background-color: rgba(144, 81, 224, 0.1);
+            transform: translateX(4px);
+            color: var(--accent-secondary);
         }
 
         .sidebar-item.coming-soon {
-            color: var(--text-secondary);
-            cursor: not-allowed;
             opacity: 0.6;
+            cursor: not-allowed;
         }
 
+        /* 内容区 */
         .content {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 4px 20px var(--shadow-light);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: var(--shadow-light);
         }
 
-        .content-section {
+        .section {
             display: none;
         }
 
-        .content-section.active {
+        .section.active {
             display: block;
+            animation: fadeIn 0.3s ease;
         }
 
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 英雄区 */
         .hero {
             text-align: center;
-            margin-bottom: 3rem;
-            padding: 2rem 0;
+            margin-bottom: 48px;
         }
 
         .hero h1 {
-            font-size: 2.5rem;
-            color: var(--accent-green);
-            margin-bottom: 1rem;
+            font-size: 36px;
             font-weight: 700;
+            color: var(--accent-primary);
+            margin-bottom: 16px;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 18px;
             color: var(--text-secondary);
-            margin-bottom: 0.5rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .hero .subtitle {
-            font-size: 1rem;
-            color: var(--accent-red);
-            font-weight: 500;
-        }
-
+        /* 特性卡片 */
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 24px;
+            margin: 48px 0;
         }
 
         .feature-card {
-            background: linear-gradient(135deg, rgba(66, 133, 244, 0.05) 0%, rgba(52, 168, 83, 0.05) 100%);
-            padding: 1.5rem;
+            background-color: rgba(144, 81, 224, 0.05);
             border-radius: 12px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
+            padding: 24px;
+            box-shadow: var(--shadow-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .feature-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px var(--shadow-medium);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
         }
 
         .feature-card h3 {
-            color: var(--accent-blue);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
+            font-size: 18px;
+            color: var(--accent-primary);
+            margin-bottom: 12px;
         }
 
-        .feature-card p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .download-section {
-            background: linear-gradient(135deg, rgba(52, 168, 83, 0.1) 0%, rgba(66, 133, 244, 0.1) 100%);
-            padding: 2rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-            text-align: center;
-        }
-
+        /* 下载按钮 */
         .download-btn {
             display: inline-block;
-            background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-blue) 100%);
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
             color: white;
-            padding: 1rem 2rem;
+            padding: 12px 24px;
             border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            margin: 0.5rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(52, 168, 83, 0.3);
+            font-weight: 500;
+            margin: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
 
         .download-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(52, 168, 83, 0.4);
+            box-shadow: var(--shadow-medium);
         }
 
-        .coming-soon-alert {
-            background: var(--accent-yellow);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 8px;
+        .download-section {
+            background-color: rgba(144, 81, 224, 0.05);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 48px 0;
             text-align: center;
-            margin: 2rem 0;
-            font-weight: 500;
-            animation: pulse 2s infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
-
-        .qa-item {
-            background: rgba(66, 133, 244, 0.05);
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin: 1rem 0;
-            border-left: 4px solid var(--accent-blue);
-        }
-
-        .qa-question {
-            font-weight: 600;
-            color: var(--accent-blue);
-            margin-bottom: 0.5rem;
-        }
-
-        .qa-answer {
-            color: var(--text-secondary);
-        }
-
-        .contact-form {
-            background: rgba(52, 168, 83, 0.05);
-            padding: 2rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-        }
-
+        /* 表单样式 */
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            color: var(--accent-green);
+            margin-bottom: 8px;
             font-weight: 500;
+            color: var(--accent-primary);
         }
 
-        .form-group input, .form-group textarea, .form-group select {
+        .form-control {
             width: 100%;
-            padding: 0.8rem;
-            border: 1px solid var(--border-color);
+            padding: 12px;
+            border: 1px solid rgba(144, 81, 224, 0.3);
             border-radius: 8px;
-            background: var(--bg-secondary);
-            font-size: 1rem;
+            background-color: var(--bg-card);
             color: var(--text-primary);
-            transition: all 0.3s ease;
+            transition: border-color 0.3s ease;
         }
 
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+        .form-control:focus {
             outline: none;
-            border-color: var(--accent-green);
-            box-shadow: 0 0 0 2px rgba(52, 168, 83, 0.2);
+            border-color: var(--accent-primary);
         }
 
-        .form-group textarea {
-            height: 120px;
+        textarea.form-control {
+            min-height: 120px;
             resize: vertical;
         }
 
         .submit-btn {
-            background: var(--accent-green);
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
             color: white;
-            padding: 1rem 2rem;
             border: none;
+            padding: 12px 24px;
             border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
+            font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .submit-btn:hover {
-            background: #2d8f47;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
         }
 
-        .disclaimer {
-            background: rgba(234, 67, 53, 0.05);
-            border: 1px solid rgba(234, 67, 53, 0.2);
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-        }
-
-        .disclaimer h3 {
-            color: var(--accent-red);
-            margin-bottom: 1rem;
-        }
-
-        .disclaimer ul {
-            color: var(--text-secondary);
-            padding-left: 1.5rem;
-        }
-
-        /* Toast Notification */
-        .toast {
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            background: var(--accent-yellow);
-            color: white;
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            z-index: 1001;
-            transform: translateX(300px);
-            transition: transform 0.3s ease;
-        }
-
-        .toast.show {
-            transform: translateX(0);
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        /* Material Introduction */
+        /* 资料详情卡片 */
         .material-intro {
-            background: var(--bg-secondary);
-            padding: 1.5rem;
+            background-color: var(--bg-card);
             border-radius: 12px;
-            margin: 2rem 0;
-            border: 1px solid var(--border-color);
+            padding: 24px;
+            border: 1px solid rgba(144, 81, 224, 0.1);
+            margin: 32px 0;
         }
 
         .material-intro h3 {
-            color: var(--accent-green);
-            margin-bottom: 0.5rem;
+            font-size: 20px;
+            color: var(--accent-primary);
+            margin-bottom: 16px;
         }
 
-        .material-intro p {
+        .material-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .meta-item {
+            font-size: 14px;
+        }
+
+        .meta-item strong {
+            display: block;
             color: var(--text-secondary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 4px;
         }
 
-        /* Feedback Form */
-        .feedback-section {
-            background: var(--bg-secondary);
-            padding: 2rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-            border: 1px solid var(--border-color);
+        /* 问答样式 */
+        .qa-item {
+            background-color: var(--bg-card);
+            border-left: 3px solid var(--accent-primary);
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 0 8px 8px 0;
         }
 
-        .feedback-section h3 {
-            color: var(--accent-yellow);
-            margin-bottom: 1rem;
+        .qa-question {
+            font-weight: 600;
+            color: var(--accent-primary);
+            margin-bottom: 8px;
         }
 
+        /* 通知提示 */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent-secondary);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-medium);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+
+        /* 响应式设计 */
         @media (max-width: 768px) {
-            .main-container {
-                grid-template-columns: 1fr;
-                padding: 1rem;
-            }
-            
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .nav-menu {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
-            
-            .nav-controls {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .features {
+            .main-content {
                 grid-template-columns: 1fr;
             }
 
-            .modal {
-                padding: 2rem;
-                margin: 1rem;
+            .nav-menu {
+                display: none;
             }
         }
     </style>
 </head>
-<body data-theme="light">
-    <!-- Welcome Modal -->
-    <div class="modal-overlay" id="welcomeModal">
-        <div class="modal">
-            <button class="modal-close" onclick="closeWelcomeModal()">&times;</button>
-            <div class="logo-container" style="justify-content: center; margin-bottom: 1.5rem;">
-                <img src="logo.svg" alt="logo" class="logo-icon" style="background:none;box-shadow:none;border-radius:0;object-fit:contain;width:40px;height:40px;">
-                <div class="logo-text" id="modal-logo-text">ABF</div>
-            </div>
-            <h2 id="modal-title">给你一个更好的未来</h2>
-            <p id="modal-content">
-                A Better Future 致力于打破信息垄断，构建公平的学习环境。
-                我们相信知识应该被自由分享，让每个人都能获得平等的学习机会。
-                加入我们，一起创造更美好的教育未来。
-            </p>
-        </div>
-    </div>
-
-    <!-- Header -->
+<body data-theme="default">
+    <!-- 导航栏 -->
     <header class="header">
         <div class="nav-container">
-            <div class="logo-container">
-              <img src="logo.svg" alt="logo" class="logo-icon" style="background:none;box-shadow:none;border-radius:0;object-fit:contain;width:40px;height:40px;">
+            <div class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="32" height="32">
+                    <rect width="100" height="100" fill="none"/>
+                    <text y="70" font-size="60" font-family="Arial" fill="var(--accent-primary)">✓</text>
+                </svg>
                 <div class="logo-text">A Better Future</div>
             </div>
-            <nav>
-                <ul class="nav-menu">
-                    <li class="nav-item active" data-section="home" id="nav-intro">项目介绍</li>
-                    <li class="nav-item" data-section="notes" id="nav-notes">笔记资料</li>
-                    <li class="nav-item" data-section="qa" id="nav-qa">Q&A</li>
-                    <li class="nav-item" data-section="join" id="nav-join">加入我们</li>
-                </ul>
-            </nav>
+            <ul class="nav-menu">
+                <li class="nav-item active" data-section="home" data-translate="home">项目介绍</li>
+                <li class="nav-item" data-section="notes" data-translate="notes">笔记资料</li>
+                <li class="nav-item" data-section="qa" data-translate="qa">Q&A</li>
+                <li class="nav-item" data-section="join" data-translate="join">加入我们</li>
+            </ul>
             <div class="nav-controls">
-                <div class="control-group">
-                    <span id="theme-label">主题:</span>
-                    <select class="theme-selector" id="themeSelector">
-                        <option value="light" id="theme-light">白天</option>
-                        <option value="dark" id="theme-dark">黑夜</option>
-                        <option value="eye-care" id="theme-eye-care">护眼</option>
-                    </select>
-                </div>
-                <div class="control-group">
-                    <span id="lang-label">语言:</span>
-                    <select class="lang-selector" id="langSelector">
-                        <option value="zh">中文</option>
-                        <option value="en">English</option>
-                    </select>
-                </div>
+                <select class="theme-selector" id="themeSelector">
+                    <option value="default" data-translate="theme-default">默认</option>
+                    <option value="neon" data-translate="theme-neon">荧光</option>
+                    <option value="sunset" data-translate="theme-sunset">阳光</option>
+                    <option value="rei" data-translate="theme-rei">凌波丽</option>
+                </select>
+                <select class="lang-selector" id="langSelector">
+                    <option value="zh" data-translate="lang-zh">中文</option>
+                    <option value="en" data-translate="lang-en">English</option>
+                </select>
             </div>
         </div>
     </header>
 
-    <!-- Toast Notification -->
-    <div class="toast" id="toast"></div>
-
-    <!-- Main Container -->
-    <div class="main-container">
-        <!-- Sidebar -->
+    <!-- 主内容区 -->
+    <div class="main-content">
+        <!-- 侧边栏 -->
         <aside class="sidebar">
             <div class="sidebar-section">
-                <div class="sidebar-title" id="sidebar-courses">📚 课程资料</div>
-                <a href="https://www.jianguoyun.com/p/Dc_9j2AQ8ITEDRiGiIkGIAA" class="sidebar-item" target="_blank" id="course-molecular">分子生物学</a>
-                <a href="https://www.jianguoyun.com/p/DW4a85YQ8ITEDRiknIkGIAA" class="sidebar-item" target="_blank" id="course-ecology">生态学</a>
-                <a href="#" class="sidebar-item coming-soon" onclick="showComingSoon()" id="course-biochem">生物化学</a>
-                <a href="#" class="sidebar-item coming-soon" onclick="showComingSoon()" id="course-cell">细胞生物学</a>
-                <a href="#" class="sidebar-item coming-soon" onclick="showComingSoon()" id="course-genetics">遗传学</a>
-                <a href="#" class="sidebar-item coming-soon" onclick="showComingSoon()" id="course-plant">植物生物学</a>
-                <a href="#" class="sidebar-item coming-soon" onclick="showComingSoon()" id="course-animal">动物生物学</a>
+                <div class="sidebar-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v1h14V2a1 1 0 0 0-1-1H2zm4.5 3.5a.5.5 0 0 1 0-1V6H6a.5.5 0 0 1 0 1H6.5v1zm0 2a.5.5 0 0 1 0-1V9H6a.5.5 0 0 1 0 1H6.5v1zm0 2a.5.5 0 0 1 0-1v-1H6a.5.5 0 0 1 0 1H6.5v1zm7-3a.5.5 0 0 1 0-1V6h1a.5.5 0 0 1 0 1v1h-1zm0 2a.5.5 0 0 1 0-1V9h1a.5.5 0 0 1 0 1v1h-1zm0 2a.5.5 0 0 1 0-1v-1h1a.5.5 0 0 1 0 1v1h-1z"/>
+                    </svg>
+                    <span data-translate="course-materials">课程资料</span>
+                </div>
+                <a href="https://www.jianguoyun.com/p/Dc_9j2AQ8ITEDRiGiIkGIAA" class="sidebar-item" target="_blank">分子生物学</a>
+                <a href="https://www.jianguoyun.com/p/DW4a85YQ8ITEDRiknIkGIAA" class="sidebar-item" target="_blank">生态学</a>
+                <a href="https://www.jianguoyun.com/p/DdUhX34Q8ITEDRinnIkGIAA" class="sidebar-item" target="_blank">进化生物学</a>
+                <a href="#" class="sidebar-item coming-soon">生物化学</a>
+                <a href="#" class="sidebar-item coming-soon">细胞生物学</a>
+                <a href="#" class="sidebar-item coming-soon">遗传学</a>
+                <a href="#" class="sidebar-item coming-soon">植物生物学</a>
+                <a href="#" class="sidebar-item coming-soon">动物生物学</a>
             </div>
             
             <div class="sidebar-section">
-                <div class="sidebar-title" id="sidebar-download">⬇️ 快速下载</div>
-                <a href="https://www.jianguoyun.com/p/Dc_9j2AQ8ITEDRiGiIkGIAA" class="sidebar-item" target="_blank" id="download-jianguo">坚果云链接</a>
-                <a href="#" class="sidebar-item coming-soon" onclick="showComingSoon()" id="download-lanzou">蓝奏云备份</a>
-                <a href="#" class="sidebar-item coming-soon" onclick="showComingSoon()" id="download-github">GitHub仓库</a>
+                <div class="sidebar-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                    </svg>
+                    <span data-translate="quick-download">快速下载</span>
+                </div>
+                <a href="https://www.jianguoyun.com/p/Dc_9j2AQ8ITEDRiGiIkGIAA" class="sidebar-item" target="_blank">坚果云链接</a>
+                <a href="#" class="sidebar-item coming-soon">蓝奏云备份</a>
+                <a href="#" class="sidebar-item coming-soon">GitHub仓库</a>
             </div>
             
             <div class="sidebar-section">
-                <div class="sidebar-title" id="sidebar-contact">📧 联系方式</div>
-                <a href="mailto:cyploveheme@gmail.com" class="sidebar-item" id="contact-email">匿名邮箱</a>
+                <div class="sidebar-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.708 2.825L15 11.105V5.383zm-.034 6.876-7.97 4.887L0 6.981l4.743-2.727a1 1 0 0 1 1.486.001zm4.956 1.33a1 1 0 0 1 1.084-.001l3.987 2.178L15 9.804l-4.932-2.757a1 1 0 0 1-1.084.001zm-6 0a1 1 0 0 1 1.084-.001l3.987 2.178L7.083 9.804l-4.932-2.757a1 1 0 0 1-1.084.001z"/>
+                    </svg>
+                    <span data-translate="contact">联系方式</span>
+                </div>
+                <a href="mailto:cyploveheme@gmail.com" class="sidebar-item">匿名邮箱</a>
             </div>
         </aside>
 
-        <!-- Main Content -->
+        <!-- 内容区 -->
         <main class="content">
-            <!-- Project Introduction -->
-            <section class="content-section active" id="home">
+            <!-- 项目介绍 -->
+            <section id="home" class="section active">
                 <div class="hero">
-                    <h1 id="hero-title">A Better Future ✨</h1>
-                    <p id="hero-subtitle">一个面向生物科学专业学生的匿名开源资料项目</p>
-                    <p class="subtitle" id="hero-slogan">打破信息垄断，追求共享精神，构建更公平的学习环境</p>
+                    <h1 data-translate="project-title">A Better Future ✨</h1>
+                    <p data-translate="project-desc">一个面向生物科学专业学生的匿名开源资料项目</p>
+                    <p data-translate="project-mission">打破信息垄断，追求共享精神，构建更公平的学习环境</p>
                 </div>
 
                 <div class="features">
                     <div class="feature-card">
-                        <h3 id="feature-intro-title">🌱 项目简介</h3>
-                        <p id="feature-intro-desc">A Better Future 是一个由匿名志愿者发起的学习资源整理计划。我们致力于收集、整理、分享生物科学课程的学习资料，让更多的同学受益。</p>
+                        <h3 data-translate="project-about">🌱 项目简介</h3>
+                        <p data-translate="project-intro">A Better Future 是一个由匿名志愿者发起的学习资源整理计划。我们致力于收集、整理、分享生物科学课程的学习资料，让更多的同学受益。</p>
                     </div>
                     <div class="feature-card">
-                        <h3 id="feature-transparent-title">✅ 透明管理</h3>
-                        <p id="feature-transparent-desc">所有资料透明、版本可追踪，每门课程一个PDF版本，定期更新，支持匿名提问、答疑解惑。</p>
+                        <h3 data-translate="transparency">✅ 透明管理</h3>
+                        <p data-translate="transparency-desc">所有资料透明、版本可追踪，每门课程一个PDF版本，定期更新，支持匿名提问、答疑解惑。</p>
                     </div>
                     <div class="feature-card">
-                        <h3 id="feature-download-title">🔄 多重下载</h3>
-                        <p id="feature-download-desc">可用 GitHub 或国内云盘下载，无需翻墙，所有云盘链接集中整理便于访问。</p>
+                        <h3 data-translate="multiple-downloads">🔄 多重下载</h3>
+                        <p data-translate="downloads-desc">可用 GitHub 或国内云盘下载，无需翻墙，所有云盘链接集中整理便于访问。</p>
                     </div>
                     <div class="feature-card">
-                        <h3 id="feature-structure-title">📁 结构清晰</h3>
-                        <p id="feature-structure-desc">每门课程都有独立目录，提供多版本 PDF 下载，包含版本说明与更新日志。</p>
+                        <h3 data-translate="clear-structure">📁 结构清晰</h3>
+                        <p data-translate="structure-desc">每门课程都有独立目录，提供多版本 PDF 下载，包含版本说明与更新日志。</p>
                     </div>
                 </div>
 
                 <div class="download-section">
-                    <h3 id="upload-title">🔐 匿名上传与管理</h3>
-                    <p id="upload-desc">本项目不接受所有人直接提交，但欢迎匿名投稿。请发送资料或更新建议到匿名邮箱。</p>
-                    <a href="mailto:cyploveheme@gmail.com" class="download-btn" id="contact-us">📧 联系我们</a>
+                    <h2 data-translate="anonymous-upload">匿名上传与管理</h2>
+                    <p data-translate="anonymous-desc">本项目不接受所有人直接提交，但欢迎匿名投稿。请发送资料或更新建议到匿名邮箱。</p>
+                    <a href="mailto:cyploveheme@gmail.com" class="download-btn" data-translate="contact-us">📧 联系我们</a>
                 </div>
 
                 <div class="disclaimer">
-                    <h3 id="disclaimer-title">⚠️ 免责声明</h3>
+                    <h3 data-translate="disclaimer">⚠️ 免责声明</h3>
                     <ul>
-                        <li id="disclaimer-1">本项目所有内容仅供学习参考</li>
-                        <li id="disclaimer-2">禁止将资料用于考试舞弊或违法用途</li>
-                        <li id="disclaimer-3">所有上传文件均加水印，版权归原作者或项目组所有</li>
-                        <li id="disclaimer-4">我们不求认同，只愿尊重</li>
+                        <li data-translate="disclaimer-1">本项目所有内容仅供学习参考</li>
+                        <li data-translate="disclaimer-2">禁止将资料用于考试舞弊或违法用途</li>
+                        <li data-translate="disclaimer-3">所有上传文件均加水印，版权归原作者或项目组所有</li>
+                        <li data-translate="disclaimer-4">我们不求认同，只愿尊重</li>
                     </ul>
                 </div>
             </section>
 
-            <!-- Notes Section -->
-            <section class="content-section" id="notes">
-                <h2 id="notes-title">📚 课程笔记资料</h2>
-                <p id="notes-desc">所有资料按课程分类整理，每个文件都包含项目水印和版本信息。</p>
+            <!-- 笔记资料 -->
+            <section id="notes" class="section">
+                <h2 data-translate="course-materials">📚 课程笔记资料</h2>
+                <p data-translate="materials-desc">所有资料按课程分类整理，每个文件都包含项目水印和版本信息。</p>
                 
                 <div class="material-intro">
-                    <h3>生态学思维导图</h3>
-                    <p><strong>版本：</strong>2025-7-4</p>
-                    <p><strong>适用教材：</strong>《生态学基础》（第六版）</p>
-                    <p><strong>作者：</strong>项目组整理</p>
-                    <p><strong>简介：</strong>这份思维导图涵盖了生态学基础课程的主要知识点，包括生态系统、生物群落、种群生态学等内容，帮助学生构建完整的知识体系。</p>
+                    <h3 data-translate="evolution-notes">进化生物学复习笔记</h3>
+                    <div class="material-meta">
+                        <div class="meta-item">
+                            <strong data-translate="version">版本</strong>
+                            2025-7-4
+                        </div>
+                        <div class="meta-item">
+                            <strong data-translate="textbook">适用教材</strong>
+                            《进化生物学导论》（第三版）
+                        </div>
+                        <div class="meta-item">
+                            <strong data-translate="author">作者</strong>
+                            项目组整理
+                        </div>
+                        <div class="meta-item">
+                            <strong data-translate="intro">简介</strong>
+                            <span data-translate="notes-intro">本笔记涵盖进化生物学的核心概念，包括自然选择、基因漂变、物种形成等关键主题，帮助学生系统掌握进化生物学的基本原理。</span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="download-section">
-                    <h3 id="available-materials">📥 当前可用资料</h3>
-                    <a href="https://www.jianguoyun.com/p/Dc_9j2AQ8ITEDRiGiIkGIAA" class="download-btn" target="_blank" id="molecular-notes">分子生物学笔记 V1.0</a>
-                    <a href="https://www.jianguoyun.com/p/DW4a85YQ8ITEDRiknIkGIAA" class="download-btn" target="_blank" id="ecology-notes">生态学思维导图 V2025-7-4</a>
-                    <p style="margin-top: 1rem; color: var(--text-secondary);" id="more-coming">更多课程资料正在整理中，敬请期待...</p>
-                </div>
-
-                <div class="coming-soon-alert" id="coming-soon-alert">
-                    🚀 更多精彩内容即将上线，敬请期待！
+                    <h3 data-translate="available-materials">当前可用资料</h3>
+                    <a href="https://www.jianguoyun.com/p/Dc_9j2AQ8ITEDRiGiIkGIAA" class="download-btn" target="_blank">分子生物学笔记 V1.0</a>
+                    <a href="https://www.jianguoyun.com/p/DW4a85YQ8ITEDRiknIkGIAA" class="download-btn" target="_blank">生态学思维导图 V2025-7-4</a>
+                    <a href="https://www.jianguoyun.com/p/DdUhX34Q8ITEDRinnIkGIAA" class="download-btn" target="_blank">进化生物学复习笔记 V2025-7-4</a>
+                    <p style="margin-top: 1rem; color: var(--text-secondary);" data-translate="more-materials">更多课程资料正在整理中，敬请期待...</p>
                 </div>
 
                 <div class="features">
                     <div class="feature-card">
-                        <h3 id="naming-title">📋 文件命名规范</h3>
-                        <p id="naming-desc">课程名称/版本号_更新日期.pdf<br>例：分子生物学/V1.0_2024-03-01.pdf</p>
+                        <h3 data-translate="file-naming">📋 文件命名规范</h3>
+                        <p data-translate="naming-desc">课程名称/版本号_更新日期.pdf<br>例：分子生物学/V1.0_2024-03-01.pdf</p>
                     </div>
                     <div class="feature-card">
-                        <h3 id="version-title">🔄 版本控制</h3>
-                        <p id="version-desc">每个资料包含README.md文件，记录版本说明与更新日志，确保透明可追溯。</p>
+                        <h3 data-translate="version-control">🔄 版本控制</h3>
+                        <p data-translate="control-desc">每个资料包含README.md文件，记录版本说明与更新日志，确保透明可追溯。</p>
                     </div>
                 </div>
 
-                <!-- Feedback Section -->
+                <!-- 反馈表单 -->
                 <div class="feedback-section">
-                    <h3 id="feedback-title">💬 资料反馈</h3>
-                    <p id="feedback-desc">如果您发现资料有问题，或者有任何改进建议，请填写以下表单反馈给我们。</p>
+                    <h3 data-translate="feedback">💬 资料反馈</h3>
+                    <p data-translate="feedback-desc">如果您发现资料有问题，或者有任何改进建议，请填写以下表单反馈给我们。</p>
                     <form id="feedback-form">
                         <div class="form-group">
-                            <label for="feedback-type" id="feedback-type-label">反馈类型</label>
-                            <select id="feedback-type" required>
-                                <option value="" disabled selected>请选择反馈类型</option>
-                                <option value="error">资料错误</option>
-                                <option value="suggestion">改进建议</option>
-                                <option value="other">其他问题</option>
+                            <label for="feedback-type" data-translate="feedback-type">反馈类型</label>
+                            <select id="feedback-type" class="form-control" required>
+                                <option value="" disabled selected></option>
+                                <option value="error" data-translate="error">资料错误</option>
+                                <option value="suggestion" data-translate="suggestion">改进建议</option>
+                                <option value="other" data-translate="other">其他问题</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="feedback-content" id="feedback-content-label">反馈内容</label>
-                            <textarea id="feedback-content" required placeholder="请详细描述您的反馈..."></textarea>
+                            <label for="feedback-content" data-translate="feedback-content">反馈内容</label>
+                            <textarea id="feedback-content" class="form-control" required placeholder="请详细描述您的反馈..."></textarea>
                         </div>
-                        <button type="submit" class="submit-btn" id="submit-feedback">提交反馈</button>
+                        <button type="submit" class="submit-btn" data-translate="submit">提交反馈</button>
                     </form>
                 </div>
             </section>
 
-            <!-- Q&A Section -->
-            <section class="content-section" id="qa">
-                <h2 id="qa-title">❓ 匿名问答模块</h2>
-                <p id="qa-desc">我们鼓励大家匿名提问学术、生活、价值观等各方面问题。所有问答都将匿名处理并公开分享。</p>
+            <!-- Q&A -->
+            <section id="qa" class="section">
+                <h2 data-translate="qa-title">❓ 匿名问答模块</h2>
+                <p data-translate="qa-desc">我们鼓励大家匿名提问学术、生活、价值观等各方面问题。所有问答都将匿名处理并公开分享。</p>
 
                 <div class="contact-form">
-                    <h3 id="qa-submit-title">📮 提交问题</h3>
-                    <p id="qa-submit-desc">请填写以下表单提交您的问题，我们会尽快回复。</p>
+                    <h3 data-translate="submit-question">📮 提交问题</h3>
                     <form id="qa-form">
                         <div class="form-group">
-                            <label for="question-type" id="question-type-label">问题类型</label>
-                            <select id="question-type" required>
-                                <option value="" disabled selected>请选择问题类型</option>
-                                <option value="academic">学术问题</option>
-                                <option value="life">生活问题</option>
-                                <option value="values">价值观问题</option>
-                                <option value="other">其他问题</option>
+                            <label for="question-type" data-translate="question-type">问题类型</label>
+                            <select id="question-type" class="form-control" required>
+                                <option value="" disabled selected></option>
+                                <option value="academic" data-translate="academic">学术问题</option>
+                                <option value="life" data-translate="life">生活问题</option>
+                                <option value="values" data-translate="values">价值观问题</option>
+                                <option value="other" data-translate="other-question">其他问题</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="question-content" id="question-content-label">问题内容</label>
-                            <textarea id="question-content" required placeholder="请详细描述您的问题..."></textarea>
+                            <label for="question-content" data-translate="question-content">问题内容</label>
+                            <textarea id="question-content" class="form-control" required placeholder="请详细描述您的问题..."></textarea>
                         </div>
-                        <button type="submit" class="submit-btn" id="submit-question">提交问题</button>
+                        <button type="submit" class="submit-btn" data-translate="submit">提交问题</button>
                     </form>
                 </div>
 
-                <h3 id="qa-examples-title" style="margin-top: 2rem;">📜 示例问题</h3>
+                <h3 style="margin-top: 2rem;" data-translate="example-questions">📜 示例问题</h3>
                 <div class="qa-item">
-                    <div class="qa-question">如何高效记忆生物化学中的复杂代谢途径？</div>
-                    <div class="qa-answer">可以尝试以下方法：1) 绘制思维导图，将代谢途径可视化；2) 使用间隔重复记忆法；3) 将代谢途径与实际应用联系起来；4) 与同学讨论并互相提问。</div>
+                    <div class="qa-question" data-translate="question-1">如何高效记忆生物化学中的复杂代谢途径？</div>
+                    <div class="qa-answer" data-translate="answer-1">可以尝试以下方法：1) 绘制思维导图，将代谢途径可视化；2) 使用间隔重复记忆法；3) 将代谢途径与实际应用联系起来；4) 与同学讨论并互相提问。</div>
                 </div>
                 <div class="qa-item">
-                    <div class="qa-question">如何平衡专业课程学习与个人兴趣发展？</div>
-                    <div class="qa-answer">建议制定合理的时间表，明确优先级，确保专业学习的同时留出时间发展个人兴趣。可以尝试将个人兴趣与专业结合，例如生物摄影、科普写作等。</div>
+                    <div class="qa-question" data-translate="question-2">如何平衡专业课程学习与个人兴趣发展？</div>
+                    <div class="qa-answer" data-translate="answer-2">建议制定合理的时间表，明确优先级，确保专业学习的同时留出时间发展个人兴趣。可以尝试将个人兴趣与专业结合，例如生物摄影、科普写作等。</div>
                 </div>
             </section>
 
-            <!-- Join Us Section -->
-            <section class="content-section" id="join">
-                <h2 id="join-title">🤝 加入我们</h2>
-                <p id="join-desc">我们欢迎所有认同开源精神的同学加入A Better Future项目。无论您擅长资料整理、内容创作还是技术支持，都可以为项目贡献力量。</p>
+            <!-- 加入我们 -->
+            <section id="join" class="section">
+                <h2 data-translate="join-us">🤝 加入我们</h2>
+                <p data-translate="join-desc">我们欢迎所有认同开源精神的同学加入A Better Future项目。无论您擅长资料整理、内容创作还是技术支持，都可以为项目贡献力量。</p>
 
                 <div class="features">
                     <div class="feature-card">
-                        <h3 id="join-ways-title">🤝 加入方式</h3>
-                        <p id="join-ways-desc">1. 发送资料或更新建议到匿名邮箱<br>2. 提交问题或建议到Q&A模块<br>3. 通过匿名邮箱申请成为核心贡献者</p>
+                        <h3 data-translate="join-methods">🤝 加入方式</h3>
+                        <p data-translate="join-methods-desc">1. 发送资料或更新建议到匿名邮箱<br>2. 提交问题或建议到Q&A模块<br>3. 通过匿名邮箱申请成为核心贡献者</p>
                     </div>
                     <div class="feature-card">
-                        <h3 id="contribution-types-title">📋 贡献类型</h3>
-                        <p id="contribution-types-desc">资料整理、内容创作、技术支持、社区维护、翻译校对</p>
+                        <h3 data-translate="contribution-types">📋 贡献类型</h3>
+                        <p data-translate="contribution-list">资料整理、内容创作、技术支持、社区维护、翻译校对</p>
                     </div>
                 </div>
 
                 <div class="contact-form">
-                    <h3 id="join-form-title">📧 联系我们</h3>
-                    <p id="join-form-desc">如果您想加入我们的团队，请填写以下表单。</p>
+                    <h3 data-translate="contact-us">📧 联系我们</h3>
                     <form id="join-form">
                         <div class="form-group">
-                            <label for="join-name" id="join-name-label">姓名（可匿名）</label>
-                            <input type="text" id="join-name" placeholder="例如：生物21级同学">
+                            <label for="join-name" data-translate="name">姓名（可匿名）</label>
+                            <input type="text" id="join-name" class="form-control" placeholder="例如：生物21级同学">
                         </div>
                         <div class="form-group">
-                            <label for="join-email" id="join-email-label">邮箱</label>
-                            <input type="email" id="join-email" required placeholder="用于联系的邮箱">
+                            <label for="join-email" data-translate="email">邮箱</label>
+                            <input type="email" id="join-email" class="form-control" required placeholder="用于联系的邮箱">
                         </div>
                         <div class="form-group">
-                            <label for="join-type" id="join-type-label">希望贡献的领域</label>
-                            <select id="join-type" required>
-                                <option value="" disabled selected>请选择贡献领域</option>
-                                <option value="organization">资料整理</option>
-                                <option value="creation">内容创作</option>
-                                <option value="tech">技术支持</option>
-                                <option value="community">社区维护</option>
-                                <option value="translation">翻译校对</option>
+                            <label for="join-type" data-translate="contribution-field">希望贡献的领域</label>
+                            <select id="join-type" class="form-control" required>
+                                <option value="" disabled selected></option>
+                                <option value="organization" data-translate="organization">资料整理</option>
+                                <option value="creation" data-translate="creation">内容创作</option>
+                                <option value="tech" data-translate="tech">技术支持</option>
+                                <option value="community" data-translate="community">社区维护</option>
+                                <option value="translation" data-translate="translation">翻译校对</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="join-message" id="join-message-label">留言（选填）</label>
-                            <textarea id="join-message" placeholder="您有什么想对我们说的吗？"></textarea>
+                            <label for="join-message" data-translate="message">留言（选填）</label>
+                            <textarea id="join-message" class="form-control" placeholder="您有什么想对我们说的吗？"></textarea>
                         </div>
-                        <button type="submit" class="submit-btn" id="submit-join">提交申请</button>
+                        <button type="submit" class="submit-btn" data-translate="apply">提交申请</button>
                     </form>
                 </div>
             </section>
         </main>
     </div>
 
+    <!-- 通知提示 -->
+    <div class="toast" id="toast"></div>
+
     <script>
-        // Modal Control
-        function closeWelcomeModal() {
-            document.getElementById('welcomeModal').classList.add('hidden');
-        }
-
-        // Theme Switcher
+        // 主题切换
         const themeSelector = document.getElementById('themeSelector');
-        const body = document.body;
-
         themeSelector.addEventListener('change', function() {
-            body.setAttribute('data-theme', this.value);
+            document.body.setAttribute('data-theme', this.value);
             localStorage.setItem('theme', this.value);
         });
 
-        // Restore saved theme
+        // 恢复上次选择的主题
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
-            body.setAttribute('data-theme', savedTheme);
+            document.body.setAttribute('data-theme', savedTheme);
             themeSelector.value = savedTheme;
         }
 
-        // Language Switcher
+        // 语言切换
         const langSelector = document.getElementById('langSelector');
-        const elements = {
-            zh: {
-                // 欢迎模态框
-                'modal-title': '给你一个更好的未来',
-                'modal-content': 'A Better Future 致力于打破信息垄断，构建公平的学习环境。我们相信知识应该被自由分享，让每个人都能获得平等的学习机会。加入我们，一起创造更美好的教育未来。',
-                'modal-logo-text': 'ABF',
-                
-                // 导航栏
-                'nav-intro': '项目介绍',
-                'nav-notes': '笔记资料',
-                'nav-qa': 'Q&A',
-                'nav-join': '加入我们',
-                'theme-label': '主题:',
-                'theme-light': '白天',
-                'theme-dark': '黑夜',
-                'theme-eye-care': '护眼',
-                'lang-label': '语言:',
-                
-                // 主页
-                'hero-title': 'A Better Future ✨',
-                'hero-subtitle': '一个面向生物科学专业学生的匿名开源资料项目',
-                'hero-slogan': '打破信息垄断，追求共享精神，构建更公平的学习环境',
-                'feature-intro-title': '🌱 项目简介',
-                'feature-intro-desc': 'A Better Future 是一个由匿名志愿者发起的学习资源整理计划。我们致力于收集、整理、分享生物科学课程的学习资料，让更多的同学受益。',
-                'feature-transparent-title': '✅ 透明管理',
-                'feature-transparent-desc': '所有资料透明、版本可追踪，每门课程一个PDF版本，定期更新，支持匿名提问、答疑解惑。',
-                'feature-download-title': '🔄 多重下载',
-                'feature-download-desc': '可用 GitHub 或国内云盘下载，无需翻墙，所有云盘链接集中整理便于访问。',
-                'feature-structure-title': '📁 结构清晰',
-                'feature-structure-desc': '每门课程都有独立目录，提供多版本 PDF 下载，包含版本说明与更新日志。',
-                'upload-title': '🔐 匿名上传与管理',
-                'upload-desc': '本项目不接受所有人直接提交，但欢迎匿名投稿。请发送资料或更新建议到匿名邮箱。',
-                'contact-us': '📧 联系我们',
-                'disclaimer-title': '⚠️ 免责声明',
-                'disclaimer-1': '本项目所有内容仅供学习参考',
-                'disclaimer-2': '禁止将资料用于考试舞弊或违法用途',
-                'disclaimer-3': '所有上传文件均加水印，版权归原作者或项目组所有',
-                'disclaimer-4': '我们不求认同，只愿尊重',
-                
-                // 笔记资料
-                'notes-title': '📚 课程笔记资料',
-                'notes-desc': '所有资料按课程分类整理，每个文件都包含项目水印和版本信息。',
-                'available-materials': '📥 当前可用资料',
-                'molecular-notes': '分子生物学笔记 V1.0',
-                'ecology-notes': '生态学思维导图 V2025-7-4',
-                'more-coming': '更多课程资料正在整理中，敬请期待...',
-                'coming-soon-alert': '🚀 更多精彩内容即将上线，敬请期待！',
-                'naming-title': '📋 文件命名规范',
-                'naming-desc': '课程名称/版本号_更新日期.pdf<br>例：分子生物学/V1.0_2024-03-01.pdf',
-                'version-title': '🔄 版本控制',
-                'version-desc': '每个资料包含README.md文件，记录版本说明与更新日志，确保透明可追溯。',
-                'feedback-title': '💬 资料反馈',
-                'feedback-desc': '如果您发现资料有问题，或者有任何改进建议，请填写以下表单反馈给我们。',
-                'feedback-type-label': '反馈类型',
-                'feedback-content-label': '反馈内容',
-                'submit-feedback': '提交反馈',
-                
-                // Q&A
-                'qa-title': '❓ 匿名问答模块',
-                'qa-desc': '我们鼓励大家匿名提问学术、生活、价值观等各方面问题。所有问答都将匿名处理并公开分享。',
-                'qa-submit-title': '📮 提交问题',
-                'qa-submit-desc': '请填写以下表单提交您的问题，我们会尽快回复。',
-                'question-type-label': '问题类型',
-                'question-content-label': '问题内容',
-                'qa-examples-title': '📜 示例问题',
-                'submit-question': '提交问题',
-                'question-type': '请选择问题类型',
-                'academic': '学术问题',
-                'life': '生活问题',
-                'values': '价值观问题',
-                'other': '其他问题',
-                
-                // 加入我们
-                'join-title': '🤝 加入我们',
-                'join-desc': '我们欢迎所有认同开源精神的同学加入A Better Future项目。无论您擅长资料整理、内容创作还是技术支持，都可以为项目贡献力量。',
-                'join-ways-title': '🤝 加入方式',
-                'join-ways-desc': '1. 发送资料或更新建议到匿名邮箱<br>2. 提交问题或建议到Q&A模块<br>3. 通过匿名邮箱申请成为核心贡献者',
-                'contribution-types-title': '📋 贡献类型',
-                'contribution-types-desc': '资料整理、内容创作、技术支持、社区维护、翻译校对',
-                'join-form-title': '📧 联系我们',
-                'join-form-desc': '如果您想加入我们的团队，请填写以下表单。',
-                'join-name-label': '姓名（可匿名）',
-                'join-email-label': '邮箱',
-                'join-type-label': '希望贡献的领域',
-                'join-message-label': '留言（选填）',
-                'organization': '资料整理',
-                'creation': '内容创作',
-                'tech': '技术支持',
-                'community': '社区维护',
-                'translation': '翻译校对',
-                'submit-join': '提交申请',
-                
-                // 侧边栏
-                'sidebar-courses': '📚 课程资料',
-                'course-molecular': '分子生物学',
-                'course-ecology': '生态学',
-                'course-biochem': '生物化学',
-                'course-cell': '细胞生物学',
-                'course-genetics': '遗传学',
-                'course-plant': '植物生物学',
-                'course-animal': '动物生物学',
-                'sidebar-download': '⬇️ 快速下载',
-                'download-jianguo': '坚果云链接',
-                'download-lanzou': '蓝奏云备份',
-                'download-github': 'GitHub仓库',
-                'sidebar-contact': '📧 联系方式',
-                'contact-email': '匿名邮箱'
-            },
-            en: {
-                // 欢迎模态框
-                'modal-title': 'A Better Future',
-                'modal-content': 'A Better Future aims to break information monopolies and build a fair learning environment. We believe knowledge should be freely shared, giving everyone equal learning opportunities. Join us in creating a better educational future.',
-                'modal-logo-text': 'ABF',
-                
-                // 导航栏
-                'nav-intro': 'Project Intro',
-                'nav-notes': 'Study Notes',
-                'nav-qa': 'Q&A',
-                'nav-join': 'Join Us',
-                'theme-label': 'Theme:',
-                'theme-light': 'Light',
-                'theme-dark': 'Dark',
-                'theme-eye-care': 'Eye-Care',
-                'lang-label': 'Language:',
-                
-                // 主页
-                'hero-title': 'A Better Future ✨',
-                'hero-subtitle': 'An anonymous open-source project for biology students',
-                'hero-slogan': 'Breaking information monopolies, pursuing sharing spirit, building a fairer learning environment',
-                'feature-intro-title': '🌱 Project Intro',
-                'feature-intro-desc': 'A Better Future is an anonymous volunteer-led study resource organization initiative. We collect, organize, and share study materials for biology courses to benefit more students.',
-                'feature-transparent-title': '✅ Transparent Management',
-                'feature-transparent-desc': 'All materials are transparent and version-tracked. Each course has one PDF version, updated regularly, with support for anonymous questions and answers.',
-                'feature-download-title': '🔄 Multiple Downloads',
-                'feature-download-desc': 'Available on GitHub or domestic cloud storage, no VPN required. All cloud links are centrally organized for easy access.',
-                'feature-structure-title': '📁 Clear Structure',
-                'feature-structure-desc': 'Each course has its own directory with multi-version PDF downloads, including version notes and update logs.',
-                'upload-title': '🔐 Anonymous Upload & Management',
-                'upload-desc': 'This project does not accept submissions from everyone directly, but we welcome anonymous contributions. Please send materials or update suggestions to the anonymous email.',
-                'contact-us': '📧 Contact Us',
-                'disclaimer-title': '⚠️ Disclaimer',
-                'disclaimer-1': 'All content is for study reference only',
-                'disclaimer-2': 'Do not use materials for exam cheating or illegal purposes',
-                'disclaimer-3': 'All uploaded files are watermarked and copyrighted by the original author or project team',
-                'disclaimer-4': 'We do not seek agreement, only respect',
-                
-                // 笔记资料
-                'notes-title': '📚 Course Study Notes',
-                'notes-desc': 'All materials are organized by course, with each file containing project watermarks and version information.',
-                'available-materials': '📥 Currently Available Materials',
-                'molecular-notes': 'Molecular Biology Notes V1.0',
-                'more-coming': 'More course materials are being organized, stay tuned...',
-                'coming-soon-alert': '🚀 More exciting content is coming soon, stay tuned!',
-                'naming-title': '📋 File Naming Convention',
-                'naming-desc': 'Course Name/Version_Update Date.pdf<br>Example: Molecular Biology/V1.0_2024-03-01.pdf',
-                'version-title': '🔄 Version Control',
-                'version-desc': 'Each material includes a README.md file recording version notes and update logs to ensure transparency and traceability.',
-                'feedback-title': '💬 Material Feedback',
-                'feedback-desc': 'If you find any issues with the materials or have any suggestions for improvement, please fill out the form below to provide us with feedback.',
-                'feedback-type-label': 'Feedback Type',
-                'feedback-content-label': 'Feedback Content',
-                'submit-feedback': 'Submit Feedback',
-                
-                // Q&A
-                'qa-title': '❓ Anonymous Q&A Module',
-                'qa-desc': 'We encourage everyone to anonymously ask academic, life, and values-related questions. All Q&A will be anonymously processed and publicly shared.',
-                'qa-submit-title': '📮 Submit a Question',
-                'qa-submit-desc': 'Please fill out the form below to submit your question, and we will respond as soon as possible.',
-                'question-type-label': 'Question Type',
-                'question-content-label': 'Question Content',
-                'qa-examples-title': '📜 Example Questions',
-                'submit-question': 'Submit Question',
-                'question-type': 'Please select question type',
-                'academic': 'Academic Questions',
-                'life': 'Life Questions',
-                'values': 'Values Questions',
-                'other': 'Other Questions',
-                
-                // 加入我们
-                'join-title': '🤝 Join Us',
-                'join-desc': 'We welcome all students who认同 open-source spirit to join the A Better Future project. Whether you excel in material organization, content creation, or technical support, you can contribute to the project.',
-                'join-ways-title': '🤝 Joining Methods',
-                'join-ways-desc': '1. Send materials or update suggestions to the anonymous email<br>2. Submit questions or suggestions to the Q&A module<br>3. Apply to become a core contributor via the anonymous email',
-                'contribution-types-title': '📋 Contribution Types',
-                'contribution-types-desc': 'Material organization, content creation, technical support, community maintenance, translation and proofreading',
-                'join-form-title': '📧 Contact Us',
-                'join-form-desc': 'If you wish to join our team, please fill out the form below.',
-                'join-name-label': 'Name (can be anonymous)',
-                'join-email-label': 'Email',
-                'join-type-label': 'Preferred Contribution Area',
-                'join-message-label': 'Message (optional)',
-                'organization': 'Material Organization',
-                'creation': 'Content Creation',
-                'tech': 'Technical Support',
-                'community': 'Community Maintenance',
-                'translation': 'Translation and Proofreading',
-                'submit-join': 'Submit Application',
-                
-                // 侧边栏
-                'sidebar-courses': '📚 Course Materials',
-                'course-molecular': 'Molecular Biology',
-                'course-ecology': 'Ecology',
-                'course-biochem': 'Biochemistry',
-                'course-cell': 'Cell Biology',
-                'course-genetics': 'Genetics',
-                'course-plant': 'Plant Biology',
-                'course-animal': 'Animal Biology',
-                'sidebar-download': '⬇️ Quick Download',
-                'download-jianguo': 'JianGuo Cloud Link',
-                'download-lanzou': 'LanZou Cloud Backup',
-                'download-github': 'GitHub Repository',
-                'sidebar-contact': '📧 Contact',
-                'contact-email': 'Anonymous Email'
-            }
-        };
-
         langSelector.addEventListener('change', function() {
-            updateLanguage(this.value);
-            localStorage.setItem('language', this.value);
+            const lang = this.value;
+            localStorage.setItem('lang', lang);
+            translatePage(lang);
         });
 
-        // Restore saved language
-        const savedLanguage = localStorage.getItem('language');
-        if (savedLanguage) {
-            langSelector.value = savedLanguage;
-            updateLanguage(savedLanguage);
-        } else {
-            updateLanguage('zh');
-        }
+        // 恢复上次选择的语言
+        const savedLang = localStorage.getItem('lang') || 'zh';
+        langSelector.value = savedLang;
+        translatePage(savedLang);
 
-        function updateLanguage(lang) {
-            const langElements = elements[lang];
-            for (const [id, text] of Object.entries(langElements)) {
-                const element = document.getElementById(id);
-                if (element) {
-                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                        element.placeholder = text;
-                    } else if (element.tagName === 'SELECT') {
-                        // Handle select options
-                        const options = element.querySelectorAll('option');
-                        options.forEach(option => {
-                            const key = option.value;
-                            if (langElements[key]) {
-                                option.textContent = langElements[key];
-                            }
-                        });
-                        // Update the selected text
-                        element.selectedIndex = 0;
-                        document.getElementById(langElements[`${element.id}-label`]).textContent = text + ':';
+        // 翻译页面
+        function translatePage(lang) {
+            const translations = {
+                'zh': {
+                    'home': '项目介绍',
+                    'notes': '笔记资料',
+                    'qa': 'Q&A',
+                    'join': '加入我们',
+                    'theme-default': '默认',
+                    'theme-neon': '荧光',
+                    'theme-sunset': '阳光',
+                    'theme-rei': '凌波丽',
+                    'lang-zh': '中文',
+                    'lang-en': 'English',
+                    'course-materials': '课程资料',
+                    'quick-download': '快速下载',
+                    'contact': '联系方式',
+                    'project-title': 'A Better Future ✨',
+                    'project-desc': '一个面向生物科学专业学生的匿名开源资料项目',
+                    'project-mission': '打破信息垄断，追求共享精神，构建更公平的学习环境',
+                    'project-about': '🌱 项目简介',
+                    'transparency': '✅ 透明管理',
+                    'multiple-downloads': '🔄 多重下载',
+                    'clear-structure': '📁 结构清晰',
+                    'anonymous-upload': '匿名上传与管理',
+                    'anonymous-desc': '本项目不接受所有人直接提交，但欢迎匿名投稿。请发送资料或更新建议到匿名邮箱。',
+                    'contact-us': '📧 联系我们',
+                    'disclaimer': '⚠️ 免责声明',
+                    'disclaimer-1': '本项目所有内容仅供学习参考',
+                    'disclaimer-2': '禁止将资料用于考试舞弊或违法用途',
+                    'disclaimer-3': '所有上传文件均加水印，版权归原作者或项目组所有',
+                    'disclaimer-4': '我们不求认同，只愿尊重',
+                    'project-intro': 'A Better Future 是一个由匿名志愿者发起的学习资源整理计划。我们致力于收集、整理、分享生物科学课程的学习资料，让更多的同学受益。',
+                    'transparency-desc': '所有资料透明、版本可追踪，每门课程一个PDF版本，定期更新，支持匿名提问、答疑解惑。',
+                    'downloads-desc': '可用 GitHub 或国内云盘下载，无需翻墙，所有云盘链接集中整理便于访问。',
+                    'structure-desc': '每门课程都有独立目录，提供多版本 PDF 下载，包含版本说明与更新日志。',
+                    'course-materials': '📚 课程笔记资料',
+                    'materials-desc': '所有资料按课程分类整理，每个文件都包含项目水印和版本信息。',
+                    'evolution-notes': '进化生物学复习笔记',
+                    'version': '版本',
+                    'textbook': '适用教材',
+                    'author': '作者',
+                    'intro': '简介',
+                    'notes-intro': '本笔记涵盖进化生物学的核心概念，包括自然选择、基因漂变、物种形成等关键主题，帮助学生系统掌握进化生物学的基本原理。',
+                    'available-materials': '当前可用资料',
+                    'more-materials': '更多课程资料正在整理中，敬请期待...',
+                    'file-naming': '📋 文件命名规范',
+                    'naming-desc': '课程名称/版本号_更新日期.pdf\n例：分子生物学/V1.0_2024-03-01.pdf',
+                    'version-control': '🔄 版本控制',
+                    'control-desc': '每个资料包含README.md文件，记录版本说明与更新日志，确保透明可追溯。',
+                    'feedback': '💬 资料反馈',
+                    'feedback-desc': '如果您发现资料有问题，或者有任何改进建议，请填写以下表单反馈给我们。',
+                    'feedback-type': '反馈类型',
+                    'error': '资料错误',
+                    'suggestion': '改进建议',
+                    'other': '其他问题',
+                    'feedback-content': '反馈内容',
+                    'submit': '提交',
+                    'qa-title': '❓ 匿名问答模块',
+                    'qa-desc': '我们鼓励大家匿名提问学术、生活、价值观等各方面问题。所有问答都将匿名处理并公开分享。',
+                    'submit-question': '📮 提交问题',
+                    'question-type': '问题类型',
+                    'academic': '学术问题',
+                    'life': '生活问题',
+                    'values': '价值观问题',
+                    'other-question': '其他问题',
+                    'question-content': '问题内容',
+                    'example-questions': '📜 示例问题',
+                    'question-1': '如何高效记忆生物化学中的复杂代谢途径？',
+                    'answer-1': '可以尝试以下方法：1) 绘制思维导图，将代谢途径可视化；2) 使用间隔重复记忆法；3) 将代谢途径与实际应用联系起来；4) 与同学讨论并互相提问。',
+                    'question-2': '如何平衡专业课程学习与个人兴趣发展？',
+                    'answer-2': '建议制定合理的时间表，明确优先级，确保专业学习的同时留出时间发展个人兴趣。可以尝试将个人兴趣与专业结合，例如生物摄影、科普写作等。',
+                    'join-us': '🤝 加入我们',
+                    'join-desc': '我们欢迎所有认同开源精神的同学加入A Better Future项目。无论您擅长资料整理、内容创作还是技术支持，都可以为项目贡献力量。',
+                    'join-methods': '🤝 加入方式',
+                    'join-methods-desc': '1. 发送资料或更新建议到匿名邮箱\n2. 提交问题或建议到Q&A模块\n3. 通过匿名邮箱申请成为核心贡献者',
+                    'contribution-types': '📋 贡献类型',
+                    'contribution-list': '资料整理、内容创作、技术支持、社区维护、翻译校对',
+                    'name': '姓名（可匿名）',
+                    'email': '邮箱',
+                    'contribution-field': '希望贡献的领域',
+                    'organization': '资料整理',
+                    'creation': '内容创作',
+                    'tech': '技术支持',
+                    'community': '社区维护',
+                    'translation': '翻译校对',
+                    'message': '留言（选填）',
+                    'apply': '提交申请'
+                },
+                'en': {
+                    'home': 'Home',
+                    'notes': 'Notes',
+                    'qa': 'Q&A',
+                    'join': 'Join Us',
+                    'theme-default': 'Default',
+                    'theme-neon': 'Neon',
+                    'theme-sunset': 'Sunset',
+                    'theme-rei': 'Rei',
+                    'lang-zh': 'Chinese',
+                    'lang-en': 'English',
+                    'course-materials': 'Course Materials',
+                    'quick-download': 'Quick Download',
+                    'contact': 'Contact',
+                    'project-title': 'A Better Future ✨',
+                    'project-desc': 'An anonymous open-source project for biology students',
+                    'project-mission': 'Breaking information monopoly, pursuing sharing spirit, building a fair learning environment',
+                    'project-about': '🌱 About',
+                    'transparency': '✅ Transparency',
+                    'multiple-downloads': '🔄 Multiple Downloads',
+                    'clear-structure': '📁 Clear Structure',
+                    'anonymous-upload': 'Anonymous Upload',
+                    'anonymous-desc': 'This project does not accept submissions from everyone, but we welcome anonymous contributions. Please send materials or suggestions to our anonymous email.',
+                    'contact-us': '📧 Contact Us',
+                    'disclaimer': '⚠️ Disclaimer',
+                    'disclaimer-1': 'All content of this project is for study only',
+                    'disclaimer-2': 'Do not use materials for exam cheating or illegal purposes',
+                    'disclaimer-3': 'All uploaded files are watermarked and copyrighted by the original author or project team',
+                    'disclaimer-4': 'We do not seek agreement, but respect',
+                    'project-intro': 'A Better Future is an anonymous volunteer initiative to organize study materials. We are committed to collecting, organizing, and sharing learning materials for biology courses to benefit more students.',
+                    'transparency-desc': 'All materials are transparent and version-controlled. Each course has a PDF version, updated regularly, with support for anonymous questions and answers.',
+                    'downloads-desc': 'Download via GitHub or domestic cloud storage, no VPN required. All cloud links are centrally organized for easy access.',
+                    'structure-desc': 'Each course has an independent directory, offering multi-version PDF downloads with version descriptions and update logs.',
+                    'course-materials': '📚 Course Notes',
+                    'materials-desc': 'All materials are organized by course, with each file containing project watermarks and version information.',
+                    'evolution-notes': 'Evolutionary Biology Review Notes',
+                    'version': 'Version',
+                    'textbook': 'Textbook',
+                    'author': 'Author',
+                    'intro': 'Introduction',
+                    'notes-intro': 'These notes cover the core concepts of evolutionary biology, including natural selection, genetic drift, and speciation. They help students systematically master the basic principles of evolutionary biology.',
+                    'available-materials': 'Currently Available Materials',
+                    'more-materials': 'More course materials are being organized, stay tuned...',
+                    'file-naming': '📋 File Naming Convention',
+                    'naming-desc': 'Course Name/Version Number_Update Date.pdf\nExample: Molecular Biology/V1.0_2024-03-01.pdf',
+                    'version-control': '🔄 Version Control',
+                    'control-desc': 'Each material includes a README.md file recording version descriptions and update logs to ensure transparency and traceability.',
+                    'feedback': '💬 Material Feedback',
+                    'feedback-desc': 'If you find any issues with the materials or have any suggestions for improvement, please fill out the form below to provide feedback.',
+                    'feedback-type': 'Feedback Type',
+                    'error': 'Material Error',
+                    'suggestion': 'Improvement Suggestion',
+                    'other': 'Other Issues',
+                    'feedback-content': 'Feedback Content',
+                    'submit': 'Submit',
+                    'qa-title': '❓ Anonymous Q&A',
+                    'qa-desc': 'We encourage everyone to anonymously ask questions about academics, life, values, and more. All Q&A will be anonymized and publicly shared.',
+                    'submit-question': '📮 Submit Question',
+                    'question-type': 'Question Type',
+                    'academic': 'Academic',
+                    'life': 'Life',
+                    'values': 'Values',
+                    'other-question': 'Other',
+                    'question-content': 'Question Content',
+                    'example-questions': '📜 Example Questions',
+                    'question-1': 'How to efficiently memorize complex metabolic pathways in biochemistry?',
+                    'answer-1': 'You can try the following methods: 1) Create a mind map to visualize metabolic pathways; 2) Use spaced repetition; 3) Link metabolic pathways with practical applications; 4) Discuss and quiz each other with classmates.',
+                    'question-2': 'How to balance professional course study with personal interest development?',
+                    'answer-2': 'It is recommended to create a reasonable timetable, set priorities, and ensure professional learning while leaving time for personal interests. You can try combining personal interests with your major, such as biological photography or science writing.',
+                    'join-us': '🤝 Join Us',
+                    'join-desc': 'We welcome all students who认同 the open-source spirit to join the A Better Future project. Whether you are good at material organization, content creation, or technical support, you can contribute to the project.',
+                    'join-methods': '🤝 Join Methods',
+                    'join-methods-desc': '1. Send materials or update suggestions to the anonymous email\n2. Submit questions or suggestions to the Q&A module\n3. Apply to become a core contributor via anonymous email',
+                    'contribution-types': '📋 Contribution Types',
+                    'contribution-list': 'Material organization, content creation, technical support, community maintenance, translation proofreading',
+                    'name': 'Name (can be anonymous)',
+                    'email': 'Email',
+                    'contribution-field': 'Field of Contribution',
+                    'organization': 'Material Organization',
+                    'creation': 'Content Creation',
+                    'tech': 'Technical Support',
+                    'community': 'Community Maintenance',
+                    'translation': 'Translation Proofreading',
+                    'message': 'Message (optional)',
+                    'apply': 'Apply Now'
+                }
+            };
+            
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = translations[lang][key];
                     } else {
-                        element.textContent = text;
+                        el.textContent = translations[lang][key];
                     }
                 }
-            }
+            });
         }
 
-        // Navigation
+        // 导航切换
         const navItems = document.querySelectorAll('.nav-item');
-        const contentSections = document.querySelectorAll('.content-section');
+        const sections = document.querySelectorAll('.section');
 
         navItems.forEach(item => {
             item.addEventListener('click', function() {
-                const targetSection = this.getAttribute('data-section');
-                
-                // Update active nav item
-                navItems.forEach(navItem => navItem.classList.remove('active'));
+                // 更新活动导航项
+                navItems.forEach(nav => nav.classList.remove('active'));
                 this.classList.add('active');
                 
-                // Show target section
-                contentSections.forEach(section => section.classList.remove('active'));
-                document.getElementById(targetSection).classList.add('active');
+                // 显示对应部分
+                const targetSection = this.getAttribute('data-section');
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                    if (section.id === targetSection) {
+                        section.classList.add('active');
+                    }
+                });
             });
         });
 
-        // Form Submissions
+        // 表单提交处理
         document.getElementById('qa-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            showNotification('问题已提交，我们会尽快回复！');
+            showToast('Question submitted, we will reply soon!');
             this.reset();
         });
 
         document.getElementById('join-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            showNotification('申请已提交，我们会尽快联系您！');
+            showToast('Application submitted, we will contact you soon!');
             this.reset();
         });
 
         document.getElementById('feedback-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            showNotification('反馈已提交，感谢您的支持！');
+            showToast('Feedback submitted, thank you for your support!');
             this.reset();
         });
 
-        // Notification
-        function showNotification(message) {
+        // 显示通知
+        function showToast(message) {
             const toast = document.getElementById('toast');
             toast.textContent = message;
             toast.classList.add('show');
@@ -1213,13 +989,10 @@
             }, 3000);
         }
 
-        // Coming Soon
-        function showComingSoon() {
-            showNotification('功能正在开发中，敬请期待！');
-        }
-
-        // Auto-close modal after 10 seconds
-        setTimeout(closeWelcomeModal, 10000);
+        // 页面加载时显示第一个部分
+        window.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('home').classList.add('active');
+        });
     </script>
 </body>
 </html>
