@@ -539,6 +539,39 @@
             display: none !important;
         }
 
+        /* Material Introduction */
+        .material-intro {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .material-intro h3 {
+            color: var(--accent-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .material-intro p {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Feedback Form */
+        .feedback-section {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .feedback-section h3 {
+            color: var(--accent-yellow);
+            margin-bottom: 1rem;
+        }
+
         @media (max-width: 768px) {
             .main-container {
                 grid-template-columns: 1fr;
@@ -639,10 +672,10 @@
             <div class="sidebar-section">
                 <div class="sidebar-title" id="sidebar-courses">📚 课程资料</div>
                 <a href="https://www.jianguoyun.com/p/Dc_9j2AQ8ITEDRiGiIkGIAA" class="sidebar-item" target="_blank" id="course-molecular">分子生物学</a>
+                <a href="https://www.jianguoyun.com/p/DW4a85YQ8ITEDRiknIkGIAA" class="sidebar-item" target="_blank" id="course-ecology">生态学</a>
                 <a href="#" class="sidebar-item coming-soon" onclick="showComingSoon()" id="course-biochem">生物化学</a>
                 <a href="#" class="sidebar-item coming-soon" onclick="showComingSoon()" id="course-cell">细胞生物学</a>
                 <a href="#" class="sidebar-item coming-soon" onclick="showComingSoon()" id="course-genetics">遗传学</a>
-                <a href="#" class="sidebar-item coming-soon" onclick="showComingSoon()" id="course-ecology">生态学</a>
                 <a href="#" class="sidebar-item coming-soon" onclick="showComingSoon()" id="course-plant">植物生物学</a>
                 <a href="#" class="sidebar-item coming-soon" onclick="showComingSoon()" id="course-animal">动物生物学</a>
             </div>
@@ -711,9 +744,18 @@
                 <h2 id="notes-title">📚 课程笔记资料</h2>
                 <p id="notes-desc">所有资料按课程分类整理，每个文件都包含项目水印和版本信息。</p>
                 
+                <div class="material-intro">
+                    <h3>生态学思维导图</h3>
+                    <p><strong>版本：</strong>2025-7-4</p>
+                    <p><strong>适用教材：</strong>《生态学基础》（第六版）</p>
+                    <p><strong>作者：</strong>项目组整理</p>
+                    <p><strong>简介：</strong>这份思维导图涵盖了生态学基础课程的主要知识点，包括生态系统、生物群落、种群生态学等内容，帮助学生构建完整的知识体系。</p>
+                </div>
+
                 <div class="download-section">
                     <h3 id="available-materials">📥 当前可用资料</h3>
                     <a href="https://www.jianguoyun.com/p/Dc_9j2AQ8ITEDRiGiIkGIAA" class="download-btn" target="_blank" id="molecular-notes">分子生物学笔记 V1.0</a>
+                    <a href="https://www.jianguoyun.com/p/DW4a85YQ8ITEDRiknIkGIAA" class="download-btn" target="_blank" id="ecology-notes">生态学思维导图 V2025-7-4</a>
                     <p style="margin-top: 1rem; color: var(--text-secondary);" id="more-coming">更多课程资料正在整理中，敬请期待...</p>
                 </div>
 
@@ -730,6 +772,28 @@
                         <h3 id="version-title">🔄 版本控制</h3>
                         <p id="version-desc">每个资料包含README.md文件，记录版本说明与更新日志，确保透明可追溯。</p>
                     </div>
+                </div>
+
+                <!-- Feedback Section -->
+                <div class="feedback-section">
+                    <h3 id="feedback-title">💬 资料反馈</h3>
+                    <p id="feedback-desc">如果您发现资料有问题，或者有任何改进建议，请填写以下表单反馈给我们。</p>
+                    <form id="feedback-form">
+                        <div class="form-group">
+                            <label for="feedback-type" id="feedback-type-label">反馈类型</label>
+                            <select id="feedback-type" required>
+                                <option value="" disabled selected>请选择反馈类型</option>
+                                <option value="error">资料错误</option>
+                                <option value="suggestion">改进建议</option>
+                                <option value="other">其他问题</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="feedback-content" id="feedback-content-label">反馈内容</label>
+                            <textarea id="feedback-content" required placeholder="请详细描述您的反馈..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" id="submit-feedback">提交反馈</button>
+                    </form>
                 </div>
             </section>
 
@@ -889,12 +953,18 @@
                 'notes-desc': '所有资料按课程分类整理，每个文件都包含项目水印和版本信息。',
                 'available-materials': '📥 当前可用资料',
                 'molecular-notes': '分子生物学笔记 V1.0',
+                'ecology-notes': '生态学思维导图 V2025-7-4',
                 'more-coming': '更多课程资料正在整理中，敬请期待...',
                 'coming-soon-alert': '🚀 更多精彩内容即将上线，敬请期待！',
                 'naming-title': '📋 文件命名规范',
                 'naming-desc': '课程名称/版本号_更新日期.pdf<br>例：分子生物学/V1.0_2024-03-01.pdf',
                 'version-title': '🔄 版本控制',
                 'version-desc': '每个资料包含README.md文件，记录版本说明与更新日志，确保透明可追溯。',
+                'feedback-title': '💬 资料反馈',
+                'feedback-desc': '如果您发现资料有问题，或者有任何改进建议，请填写以下表单反馈给我们。',
+                'feedback-type-label': '反馈类型',
+                'feedback-content-label': '反馈内容',
+                'submit-feedback': '提交反馈',
                 
                 // Q&A
                 'qa-title': '❓ 匿名问答模块',
@@ -934,10 +1004,10 @@
                 // 侧边栏
                 'sidebar-courses': '📚 课程资料',
                 'course-molecular': '分子生物学',
+                'course-ecology': '生态学',
                 'course-biochem': '生物化学',
                 'course-cell': '细胞生物学',
                 'course-genetics': '遗传学',
-                'course-ecology': '生态学',
                 'course-plant': '植物生物学',
                 'course-animal': '动物生物学',
                 'sidebar-download': '⬇️ 快速下载',
@@ -996,6 +1066,11 @@
                 'naming-desc': 'Course Name/Version_Update Date.pdf<br>Example: Molecular Biology/V1.0_2024-03-01.pdf',
                 'version-title': '🔄 Version Control',
                 'version-desc': 'Each material includes a README.md file recording version notes and update logs to ensure transparency and traceability.',
+                'feedback-title': '💬 Material Feedback',
+                'feedback-desc': 'If you find any issues with the materials or have any suggestions for improvement, please fill out the form below to provide us with feedback.',
+                'feedback-type-label': 'Feedback Type',
+                'feedback-content-label': 'Feedback Content',
+                'submit-feedback': 'Submit Feedback',
                 
                 // Q&A
                 'qa-title': '❓ Anonymous Q&A Module',
@@ -1035,10 +1110,10 @@
                 // 侧边栏
                 'sidebar-courses': '📚 Course Materials',
                 'course-molecular': 'Molecular Biology',
+                'course-ecology': 'Ecology',
                 'course-biochem': 'Biochemistry',
                 'course-cell': 'Cell Biology',
                 'course-genetics': 'Genetics',
-                'course-ecology': 'Ecology',
                 'course-plant': 'Plant Biology',
                 'course-animal': 'Animal Biology',
                 'sidebar-download': '⬇️ Quick Download',
@@ -1118,6 +1193,12 @@
         document.getElementById('join-form').addEventListener('submit', function(e) {
             e.preventDefault();
             showNotification('申请已提交，我们会尽快联系您！');
+            this.reset();
+        });
+
+        document.getElementById('feedback-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showNotification('反馈已提交，感谢您的支持！');
             this.reset();
         });
 
