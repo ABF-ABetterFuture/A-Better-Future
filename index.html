@@ -653,10 +653,10 @@
                         还是仅仅是一种“解题的姿势”？
                     </p>
                     <div class="philosophy-quote" data-translate="philosophy-quote1">
-                        你可能会发现，<br>
-                        播放量最高的课程，<br>
-                        总是那些带着“七天速成”<br>
-                        “保底80分”<br>
+                        你可能会发现，
+                        播放量最高的课程，
+                        总是那些带着“七天速成”
+                        “保底80分”
                         “压线提分”的标签。
                     </div>
                     <p data-translate="philosophy-cont1">
@@ -674,9 +674,9 @@
                         只有你和自己一次次的较劲。
                     </p>
                     <div class="philosophy-quote" data-translate="philosophy-quote2">
-                        学历，仿佛是一枚光鲜亮丽的徽章，<br>
-                        戴在每个年轻人的胸前；<br>
-                        绩点，仿佛一把无形的尺子，<br>
+                        学历，仿佛是一枚光鲜亮丽的徽章，
+                        戴在每个年轻人的胸前；
+                        绩点，仿佛一把无形的尺子，
                         悬挂在每个人的头顶。
                     </div>
                     <p data-translate="philosophy-cont2">
@@ -1208,6 +1208,9 @@
                 if (translations[lang] && translations[lang][key]) {
                     if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
                         el.placeholder = translations[lang][key];
+                    } else if (el.tagName === 'P') {
+                        // 特别处理理念部分的p标签，确保换行符被正确处理
+                        el.innerHTML = translations[lang][key].replace(/\n/g, '<br>');
                     } else {
                         el.textContent = translations[lang][key];
                     }
