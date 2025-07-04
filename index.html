@@ -488,6 +488,32 @@
             margin-bottom: 20px;
         }
 
+        /* 理念样式 */
+        #philosophy {
+            margin: 50px 0;
+            padding: 30px;
+            background-color: rgba(144, 81, 224, 0.05);
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-primary);
+        }
+        #philosophy h3 {
+            font-size: 22px;
+            color: var(--accent-primary);
+            margin-bottom: 15px;
+        }
+        #philosophy p {
+            text-align: justify;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        .philosophy-quote {
+            font-style: italic;
+            padding: 10px;
+            background-color: rgba(144, 81, 224, 0.1);
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
         /* 响应式设计 */
         @media (max-width: 768px) {
             .main-content {
@@ -539,7 +565,7 @@
             <div class="sidebar-section">
                 <div class="sidebar-title">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v1h14V2a1 1 0 0 0-1-1H2zm4.5 3.5a.5.5 0 0 1 0-1V6H6a.5.5 0 0 1 0 1H6.5v1zm0 2a.5.5 0 0 1 0-1V9H6a.5.5 0 0 1 0 1H6.5v1zm0 2a.5.5 0 0 1 0-1v-1H6a.5.5 0 0 1 0 1H6.5v1zm7-3a.5.5 0 0 1 0-1V6h1a.5.5 0 0 1 0 1v1h-1zm0 2a.5.5 0 0 1 0-1V9h1a.5.5 0 0 1 0 1v1h-1zm0 2a.5.5 0 0 1 0-1v-1h1a.5.5 0 0 1 0 1v1h-1z"/>
+                        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.708 2.825L15 11.105V5.383zm-.034 6.876-7.97 4.887L0 6.981l4.743-2.727a1 1 0 0 1 1.486.001zm4.956 1.33a1 1 0 0 1 1.084-.001l3.987 2.178L7.083 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
                     </svg>
                     <span data-translate="course-materials">课程资料</span>
                 </div>
@@ -569,7 +595,7 @@
             <div class="sidebar-section">
                 <div class="sidebar-title">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.708 2.825L15 11.105V5.383zm-.034 6.876-7.97 4.887L0 6.981l4.743-2.727a1 1 0 0 1 1.486.001zm4.956 1.33a1 1 0 0 1 1.084-.001l3.987 2.178L7.083 9.804l-4.932-2.757a1 1 0 0 1-1.084.001zm-6 0a1 1 0 0 1 1.084-.001l3.987 2.178L7.083 9.804l-4.932-2.757a1 1 0 0 1-1.084.001z"/>
+                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.708 2.825L15 11.105V5.383zm-.034 6.876-7.97 4.887L0 6.981l4.743-2.727a1 1 0 0 1 1.486.001zm4.956 1.33a1 1 0 0 1 1.084-.001l3.987 2.178L7.083 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
                     </svg>
                     <span data-translate="contact">联系方式</span>
                 </div>
@@ -606,8 +632,93 @@
                     </div>
                 </div>
 
+                <div id="philosophy">
+                    <h3 data-translate="philosophy-title">🎬 项目理念</h3>
+                    <p data-translate="philosophy-content">为什么要创建ABF项目？或许我们首先该从一个简单而残酷的事实讲起：<br>
+学历，从来就不是知识的证明，它不过是社会管理的一道筛子。<br>
+在这道筛子里，每一个人，自从牙牙学语之时起，便被推入了这条轨迹：<br>
+学前班、幼儿园、小学、初中、高中、大学、研究生、博士……<br>
+一层层叠加，像一道道闭合的闸门，层层筛选、分流、淘汰，最终再晋升。<br>
+人们常说“知识改变命运”。<br>
+可当你真的站在教室里，埋头刷着一套又一套模拟卷时，<br>
+有没有想过：我们所学的，真的是知识，还是仅仅是一种“解题的姿势”？</p>
+                    <div class="philosophy-quote" data-translate="philosophy-quote1">你可能会发现，播放量最高的课程，总是那些带着“七天速成”“保底80分”“压线提分”的标签。</div>
+                    <p data-translate="philosophy-cont1">这些课程，无疑迎合了当代年轻人对“确定性”的渴望——<br>
+可控、可预期、可重复，最好能在一夜之间翻盘。<br>
+然而，若问：真有如此捷径吗？<br>
+答案几乎残酷：最快的路，往往是最慢的路。<br>
+真正能打入你骨髓的东西，是你一个人在孤灯下，<br>
+一页一页地啃出来的，<br>
+没有旁听、没有速成，只有你和自己一次次的较劲。</p>
+                    <div class="philosophy-quote" data-translate="philosophy-quote2">学历，仿佛是一枚光鲜亮丽的徽章，戴在每个年轻人的胸前；<br>绩点，仿佛一把无形的尺子，悬挂在每个人的头顶。</div>
+                    <p data-translate="philosophy-cont2">为了那一分两分，我们心力交瘁，<br>
+担心某门课程的九十分只能得八十八，<br>
+熬夜补交实验报告，只为确保排名不下滑。<br>
+因为你深知：这一分之差，可能是奖学金的门票，可能是保研的希望，可能是出国交换的机会，<br>
+也可能是通向更大舞台的唯一船票。<br>
+为了那一分，我们不敢分心，不敢社交，不敢恋爱，<br>
+只敢埋头苦读，害怕每一秒的浪费。<br>
+你以为你选择了最稳妥的路，<br>
+实际上，你只是被这条单行道逼得没有退路。</p>
+                    <p data-translate="philosophy-cont3">在这条单行道上，我们看到了荒诞的一幕：<br>
+我们花着学费，进入课堂，却用手机和电脑把自己封闭。<br>
+我们拼命赶DDL，却懒得整理宿舍，懒得自我管理，连吃饭洗衣都要依赖外卖和快递。<br>
+我们拥有空前丰富的信息渠道，却将它们浪费在无休止的短视频、碎片化的观点、极化的舆论中。<br>
+大学，不再是沉淀心智、塑造人格、练习自我负责的净土，<br>
+而变成了一座巨大的剧场。<br>
+老师在台上表演单口相声，学生在台下签到点头，各自演绎各自的戏。<br>
+大家心照不宣，这场戏演给绩点看，演给简历看，演给父母看，<br>
+却没有一个观众，真正看见你自己。</p>
+                    <p data-translate="philosophy-cont4">有时候，我们寄希望于“教育改革”四个字，<br>
+但这真的有那么简单吗？<br>
+当绩点决定一切时，老师也无能为力。<br>
+当综测奖项成了筛选工具，学生只会去拼那些“好看”的比赛，<br>
+哪怕这些比赛和他们的未来方向毫无关系。<br>
+教育体制想要证明一个学生的优秀，唯一能量化的指标，便是成绩。<br>
+我们常批评体制冷漠无情，<br>
+但换个角度想一想：<br>
+如果你是用人者、是奖学金发放者，<br>
+你又凭什么相信一个连绩点都守不住的人，能在其他地方证明自己的价值？</p>
+                    <p data-translate="philosophy-cont5">这是一个悖论：<br>
+体制信任分数，学生追逐分数，<br>
+而分数，消耗了学生的多样性与想象力。<br>
+然而，这一切并非孤立存在。<br>
+如今，信息膨胀的时代来临，<br>
+互联网让我们随时可以获得知识，<br>
+却也把我们困在算法编织的茧房中。<br>
+一旦你接触到一个极端观念、一个耸动言论，<br>
+它便悄无声息地植入大脑，滋生蔓延。<br>
+在几十亿人口的海洋中，这种“遗传漂变”逐渐成为洪流。<br>
+我们以为自由选择，<br>
+实则只是被输入、被塑造、被影响。<br>
+这并非危言耸听，也不是失败的宣告。<br>
+恰恰相反，面对这种局面，我们唯一要问自己的问题是：<br>
+在这场从筛选到筛选的奔跑里，<br>
+真正能带着你穿越门槛、走向远方的是什么？<br>
+它不会是单一的分数，不会是速成的题库，不会是老师的PPT；<br>
+它只能是你内心的动力，你的自我更新能力，<br>
+你对问题的好奇心与解决能力。<br>
+这正是任何筛子无法筛掉的核心，是任何赛道之外，<br>
+你唯一能带走的武器。</p>
+                    <p data-translate="philosophy-cont6">因此，或许有些辛苦也无妨，但那必须是有价值的辛苦。<br>
+即使绩点依旧是门槛，也不应让它成为牢笼。<br>
+守住最低的分数线，把剩下的时间与精力，<br>
+投入到那些没人要求你做的事：<br>
+读一本没人催促的书，做一个无人要求的项目，<br>
+与一个不在同一圈层的人，进行一次深刻的对话。<br>
+别怕走得慢，怕的是你根本没有开始走自己的路。<br>
+学历是门槛，门槛之后，才是广阔的旷野。<br>
+因此，我们想帮助你，不仅仅是提供更丰富的信息，<br>
+而是传递一种观念——最快的路，往往是最慢的路。<br>
+我们做的，不是为你铺设一条捷径，而是将我们在这条路上的脚步展示给你。<br>
+至于你将走向何方，你来决定。<br>
+愿你有勇气越过这道筛子，<br>
+更愿你有能力，在无人监督的远方，自己为自己点亮前行的灯。<br>
+ABF——给你一个更好的未来。</p>
+                </div>
+
                 <div class="download-section">
-                    <h2 data-translate="anonymous-upload">匿名上传与管理</h2>
+                    <h3 data-translate="anonymous-upload">匿名上传与管理</h3>
                     <p data-translate="anonymous-desc">本项目不接受所有人直接提交，但欢迎匿名投稿。请发送资料或更新建议到匿名邮箱。</p>
                     <a href="mailto:cyploveheme@gmail.com" class="download-btn" data-translate="contact-us">📧 联系我们</a>
                 </div>
@@ -912,7 +1023,17 @@
                     'apply': '提交申请',
                     'welcome-title': 'A Better Future',
                     'welcome-message': '为了给你一个更好的未来',
-                    'close-btn': '关闭'
+                    'close-btn': '关闭',
+                    'philosophy-title': '🎬 项目理念',
+                    'philosophy-content': '为什么要创建ABF项目？或许我们首先该从一个简单而残酷的事实讲起：<br>学历，从来就不是知识的证明，它不过是社会管理的一道筛子。<br>在这道筛子里，每一个人，自从牙牙学语之时起，便被推入了这条轨迹：<br>学前班、幼儿园、小学、初中、高中、大学、研究生、博士……<br>一层层叠加，像一道道闭合的闸门，层层筛选、分流、淘汰，最终再晋升。<br>人们常说“知识改变命运”。<br>可当你真的站在教室里，埋头刷着一套又一套模拟卷时，<br>有没有想过：我们所学的，真的是知识，还是仅仅是一种“解题的姿势”？',
+                    'philosophy-quote1': '你可能会发现，播放量最高的课程，总是那些带着“七天速成”“保底80分”“压线提分”的标签。',
+                    'philosophy-cont1': '这些课程，无疑迎合了当代年轻人对“确定性”的渴望——<br>可控、可预期、可重复，最好能在一夜之间翻盘。<br>然而，若问：真有如此捷径吗？<br>答案几乎残酷：最快的路，往往是最慢的路。<br>真正能打入你骨髓的东西，是你一个人在孤灯下，<br>一页一页地啃出来的，<br>没有旁听、没有速成，只有你和自己一次次的较劲。',
+                    'philosophy-quote2': '学历，仿佛是一枚光鲜亮丽的徽章，戴在每个年轻人的胸前；<br>绩点，仿佛一把无形的尺子，悬挂在每个人的头顶。',
+                    'philosophy-cont2': '为了那一分两分，我们心力交瘁，<br>担心某门课程的九十分只能得八十八，<br>熬夜补交实验报告，只为确保排名不下滑。<br>因为你深知：这一分之差，可能是奖学金的门票，可能是保研的希望，可能是出国交换的机会，<br>也可能是通向更大舞台的唯一船票。<br>为了那一分，我们不敢分心，不敢社交，不敢恋爱，<br>只敢埋头苦读，害怕每一秒的浪费。<br>你以为你选择了最稳妥的路，<br>实际上，你只是被这条单行道逼得没有退路。',
+                    'philosophy-cont3': '在这条单行道上，我们看到了荒诞的一幕：<br>我们花着学费，进入课堂，却用手机和电脑把自己封闭。<br>我们拼命赶DDL，却懒得整理宿舍，懒得自我管理，连吃饭洗衣都要依赖外卖和快递。<br>我们拥有空前丰富的信息渠道，却将它们浪费在无休止的短视频、碎片化的观点、极化的舆论中。<br>大学，不再是沉淀心智、塑造人格、练习自我负责的净土，<br>而变成了一座巨大的剧场。<br>老师在台上表演单口相声，学生在台下签到点头，各自演绎各自的戏。<br>大家心照不宣，这场戏演给绩点看，演给简历看，演给父母看，<br>却没有一个观众，真正看见你自己。',
+                    'philosophy-cont4': '有时候，我们寄希望于“教育改革”四个字，<br>但这真的有那么简单吗？<br>当绩点决定一切时，老师也无能为力。<br>当综测奖项成了筛选工具，学生只会去拼那些“好看”的比赛，<br>哪怕这些比赛和他们的未来方向毫无关系。<br>教育体制想要证明一个学生的优秀，唯一能量化的指标，便是成绩。<br>我们常批评体制冷漠无情，<br>但换个角度想一想：<br>如果你是用人者、是奖学金发放者，<br>你又凭什么相信一个连绩点都守不住的人，能在其他地方证明自己的价值？',
+                    'philosophy-cont5': '这是一个悖论：<br>体制信任分数，学生追逐分数，<br>而分数，消耗了学生的多样性与想象力。<br>然而，这一切并非孤立存在。<br>如今，信息膨胀的时代来临，<br>互联网让我们随时可以获得知识，<br>却也把我们困在算法编织的茧房中。<br>一旦你接触到一个极端观念、一个耸动言论，<br>它便悄无声息地植入大脑，滋生蔓延。<br>在几十亿人口的海洋中，这种“遗传漂变”逐渐成为洪流。<br>我们以为自由选择，<br>实则只是被输入、被塑造、被影响。<br>这并非危言耸听，也不是失败的宣告。<br>恰恰相反，面对这种局面，我们唯一要问自己的问题是：<br>在这场从筛选到筛选的奔跑里，<br>真正能带着你穿越门槛、走向远方的是什么？<br>它不会是单一的分数，不会是速成的题库，不会是老师的PPT；<br>它只能是你内心的动力，你的自我更新能力，<br>你对问题的好奇心与解决能力。<br>这正是任何筛子无法筛掉的核心，是任何赛道之外，<br>你唯一能带走的武器。',
+                    'philosophy-cont6': '因此，或许有些辛苦也无妨，但那必须是有价值的辛苦。<br>即使绩点依旧是门槛，也不应让它成为牢笼。<br>守住最低的分数线，把剩下的时间与精力，<br>投入到那些没人要求你做的事：<br>读一本没人催促的书，做一个无人要求的项目，<br>与一个不在同一圈层的人，进行一次深刻的对话。<br>别怕走得慢，怕的是你根本没有开始走自己的路。<br>学历是门槛，门槛之后，才是广阔的旷野。<br>因此，我们想帮助你，不仅仅是提供更丰富的信息，<br>而是传递一种观念——最快的路，往往是最慢的路。<br>我们做的，不是为你铺设一条捷径，而是将我们在这条路上的脚步展示给你。<br>至于你将走向何方，你来决定。<br>愿你有勇气越过这道筛子，<br>更愿你有能力，在无人监督的远方，自己为自己点亮前行的灯。<br>ABF——给你一个更好的未来。'
                 },
                 'en': {
                     'home': 'Home',
@@ -984,7 +1105,7 @@
                     'question-2': 'How to balance professional course study with personal interest development?',
                     'answer-2': 'It is recommended to create a reasonable timetable, set priorities, and ensure professional learning while leaving time for personal interests. You can try combining personal interests with your major, such as biological photography or science writing.',
                     'join-us': '🤝 Join Us',
-                    'join-desc': 'We welcome all students who认同 the open-source spirit to join the A Better Future project. Whether you are good at material organization, content creation, or technical support, you can contribute to the project.',
+                    'join-desc': 'We welcome all students who agree the open-source spirit to join the A Better Future project. Whether you are good at material organization, content creation, or technical support, you can contribute to the project.',
                     'join-methods': '🤝 Join Methods',
                     'join-methods-desc': '1. Send materials or update suggestions to the anonymous email\n2. Submit questions or suggestions to the Q&A module\n3. Apply to become a core contributor via anonymous email',
                     'contribution-types': '📋 Contribution Types',
@@ -1001,7 +1122,17 @@
                     'apply': 'Apply Now',
                     'welcome-title': 'A Better Future',
                     'welcome-message': 'For a Better Future',
-                    'close-btn': 'Close'
+                    'close-btn': 'Close',
+                    'philosophy-title': '🎬 Project Philosophy',
+                    'philosophy-content': 'Why did we create the ABF project? Perhaps we should start with a simple yet brutal fact:<br>Academic qualifications have never been proof of knowledge; they are merely a sieve for social management.<br>In this sieve, everyone, from the moment they begin to speak, is pushed into this trajectory:<br>Kindergarten, elementary school, middle school, high school, university, graduate school, PhD...<br>Layer upon layer, like closed gates, filtering,shunting, eliminating, and finally advancing.<br>People often say, "Knowledge changes destiny."<br>But when you stand in the classroom, burying yourself in one mock exam after another,<br>Have you ever wondered: What we learn, is it really knowledge, or just a "pose for solving problems"?',
+                    'philosophy-quote1': 'You may find that the most viewed courses are always those labeled with "7-day crash course," "guaranteed 80 points," or "just passing the line."',
+                    'philosophy-cont1': 'These courses undoubtedly cater to contemporary youth\'s craving for "certainty"—<br>Controllable, predictable, repeatable, and ideally, a complete turnaround overnight.<br>But if asked: Are there really such shortcuts?<br>The answer is almost cruel: The fastest path is often the slowest path.<br>What truly embeds itself in your marrow is what you consume alone under a solitary lamp,<br>Page by page, without attending lectures, without shortcuts, only you and yourself in a continuous struggle.',
+                    'philosophy-quote2': 'Academic qualifications, like a shiny badge, adorn the chests of every young person;<br>GPA, like an invisible ruler, hangs over everyone\'s head.',
+                    'philosophy-cont2': 'For that one or two points, we exhaust ourselves,<br>Worrying that a course grade of ninety might drop to eighty-eight,<br>Staying up all night to submit lab reports just to ensure our rankings don\'t slip.<br>Because you know: That one-point difference could be the ticket to a scholarship, the hope for graduate school recommendation, the opportunity for overseas exchange,<br>Or the only vessel to a bigger stage.<br>For that one point, we dare not be distracted, socialize, or fall in love,<br>We only dare to bury our heads in books, fearing every second wasted.<br>You think you\'ve chosen the safest path,<br>But in reality, you\'ve been left with no way out on this one-way street.',
+                    'philosophy-cont3': 'On this one-way street, we witness an absurd scene:<br>We pay tuition to enter classrooms, yet seal ourselves off with phones and computers.<br>We rush against deadlines but neglect to tidy our dorms, manage ourselves, even relying on takeout and delivery for meals and laundry.<br>We possess unprecedented information channels, yet squander them on endless short videos, fragmented perspectives, and polarized rhetoric.<br>University is no longer a sanctuary for cultivating the mind, shaping character, and practicing self-responsibility,<br>But has become a vast theater.<br>Teachers perform stand-up on stage, students nod and check in below, each acting out their own play.<br>Everyone tacitly understands: This play is performed for GPA, for resumes, for parents,<br>But no audience truly sees you.',
+                    'philosophy-cont4': 'Sometimes, we pin our hopes on the four words "educational reform,"<br>But is it really that simple?<br>When GPA dictates everything, teachers are powerless too.<br>When comprehensive assessment awards become filtering tools, students will only compete in "impressive" contests,<br>Even if these contests have no relation to their future direction.<br>The education system wants to prove a student\'s excellence, and the only quantifiable metric is grades.<br>We often criticize the system for being cold and heartless,<br>But think about it from another angle:<br>If you were the employer or scholarship grantor,<br>What would make you trust someone who can\'t even maintain their GPA to prove their worth elsewhere?',
+                    'philosophy-cont5': 'This is a paradox:<br>The system trusts scores, students chase scores,<br>And scores consume the diversity and imagination of students.<br>Yet, this is not an isolated phenomenon.<br>The era of information explosion has arrived,<br>The internet allows us instant access to knowledge,<br>But also traps us in algorithmic echo chambers.<br>Once exposed to an extreme viewpoint or sensational rhetoric,<br>It quietly implants itself in the mind, taking root and spreading.<br>In the ocean of billions of people, this "genetic drift" gradually becomes a flood.<br>We think we choose freely,<br>But in reality, we are being fed, shaped, and influenced.<br>This is not an alarmist statement, nor a declaration of failure.<br>On the contrary, in the face of this situation, the only question we need to ask ourselves is:<br>In this race from one filter to another,<br>What truly carries you across the thresholds and toward the future?<br>It will not be a single score, nor a crash course bank, nor the teacher\'s PPT;<br>It can only be your inner drive, your ability to renew yourself,<br>Your curiosity about problems and your capacity to solve them.<br>This is the core that no filter can remove, the weapon you alone take with you beyond any race track.',
+                    'philosophy-cont6': 'Therefore, hardship is acceptable as long as it is meaningful.<br>Even if GPA remains a threshold, it should not become a cage.<br>Secure the minimum passing score, and devote the remaining time and energy<br>To things no one demands of you:<br>Read a book no one urges you to read, undertake a project no one requires,<br>Engage in a profound conversation with someone outside your circle.<br>Fear not moving slowly; fear not starting your own path.<br>GPA is a threshold, and beyond it lies vast wilderness.<br>We aim to help you not just by providing richer information,<br>But by conveying an idea—that the fastest path is often the slowest path.<br>We do not pave a shortcut for you, but display our footsteps along this journey.<br>Where you go is your decision.<br>May you have the courage to leap beyond this filter,<br>And may you possess the ability to light your own way in the unsupervised distance.<br>ABF—Giving You a Better Future.'
                 }
             };
             
